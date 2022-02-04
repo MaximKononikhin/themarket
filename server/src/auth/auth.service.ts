@@ -41,7 +41,7 @@ export class AuthService {
             return result;
         }
 
-        throw new UnauthorizedException({message: 'Неверный email или пароль'})
+        throw new HttpException("Неверный email или пароль", HttpStatus.BAD_REQUEST)
     }
 
     async login (loginUserDto: LoginUserDto) {
