@@ -11,9 +11,9 @@ export class UserController {
     constructor(private readonly userService: UserService) {
     }
 
+    @UseInterceptors(FileInterceptor('avatar'))
     @Post('avatar')
     @UseGuards(JwtAuthGuard)
-    @UseInterceptors(FileInterceptor('file'))
     async addAvatar(@GetCurrentUserData() user: JwtPayload, @UploadedFile() file: Express.Multer.File) {
         return await this.userService.addAvatar(user.id, file.buffer, file.originalname);
     }
