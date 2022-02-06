@@ -1,6 +1,6 @@
 import {Injectable, InternalServerErrorException} from '@nestjs/common';
 import {InjectRepository} from "@nestjs/typeorm";
-import File from "./file.entity";
+import File from "../entities/file.entity";
 import {Repository} from "typeorm";
 import { S3 } from 'aws-sdk';
 import { v4 as uuid } from 'uuid'

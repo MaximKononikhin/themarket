@@ -1,6 +1,6 @@
 import {Column, Entity, JoinColumn, JoinTable, ManyToMany, OneToOne, PrimaryGeneratedColumn} from "typeorm";
-import {Role} from "../role/role.entity";
-import File from "../file/file.entity";
+import {Role} from "./role.entity";
+import File from "./file.entity";
 
 @Entity()
 export class User {
@@ -17,7 +17,7 @@ export class User {
     name: string;
 
     @JoinColumn()
-    @OneToOne(() => File, { eager: true, nullable: true, onDelete: "SET NULL" })
+    @OneToOne(() => File, { eager: true, nullable: true, onDelete: "SET NULL", cascade: true })
     public avatar?: File;
 
     @ManyToMany(() => Role, role => role.users)

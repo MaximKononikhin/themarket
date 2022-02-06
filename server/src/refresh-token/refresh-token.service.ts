@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import {InjectRepository} from "@nestjs/typeorm";
-import {RefreshTokenEntity} from "./refresh-token.entity";
+import {RefreshTokenEntity} from "../entities/refresh-token.entity";
 import {Repository} from "typeorm";
 import {JwtService} from "@nestjs/jwt";
 import {Tokens} from "./types/tokens.type";
