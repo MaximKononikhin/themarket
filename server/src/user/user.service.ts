@@ -35,11 +35,12 @@ export class UserService {
     }
 
     async addAvatar(userId: number, imageBuffer: Buffer, filename: string) {
+        const avatar = await this.fileService.uploadFile(imageBuffer, filename);
+
         const user = await this.getUserById(userId);
         if (user.avatar) {
             await this.deleteAvatar(userId);
         }
-        const avatar = await this.fileService.uploadFile(imageBuffer, filename);
         await this.userRepository.update(userId, {
             avatar
         });
