@@ -5,6 +5,7 @@ import { Gender } from "./gender.entity";
 import { ProductPhoto } from "./product-photo.entity";
 import { Size } from "./size.entity";
 import { Subcategory } from "./subcategory.entity";
+import { User } from "./user.entity";
 
 @Entity()
 export class Product {
@@ -55,4 +56,7 @@ export class Product {
 
     @ManyToOne(() => Subcategory, subcategory => subcategory.products)
     subcategory: Subcategory;
+
+    @ManyToOne(() => User, user => user.products)
+    user: User;
 }
