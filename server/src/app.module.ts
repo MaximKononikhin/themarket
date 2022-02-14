@@ -14,6 +14,9 @@ import {Gender} from "./entities/gender.entity";
 import { Category } from './entities/category.entity';
 import { Subcategory } from './entities/subcategory.entity';
 import { Condition } from './entities/condition.entity';
+import { Product } from './entities/product.entity';
+import { S3Module } from './s3/s3.module';
+import { ProductPhoto } from './entities/product-photo.entity';
 
 @Module({
   controllers: [],
@@ -26,7 +29,10 @@ import { Condition } from './entities/condition.entity';
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
-      entities: [User, Role, RefreshTokenEntity, File, Gender, Category, Subcategory, Size, Condition],
+      entities: [
+          User, Role, RefreshTokenEntity, File, Gender,
+          Category, Subcategory, Size, Condition, Product, ProductPhoto
+      ],
       synchronize: true,
     }),
       UserModule,
@@ -34,6 +40,7 @@ import { Condition } from './entities/condition.entity';
       AuthModule,
       RefreshTokenModule,
       FileModule,
+      S3Module,
   ]
 })
 export class AppModule {}

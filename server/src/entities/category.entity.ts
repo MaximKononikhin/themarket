@@ -2,6 +2,7 @@ import {Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn} from "type
 import { Gender } from "./gender.entity";
 import { Subcategory } from "./subcategory.entity";
 import { Size } from "./size.entity";
+import { Product } from "./product.entity";
 
 
 @Entity()
@@ -24,4 +25,7 @@ export class Category {
 
     @OneToMany(() => Size, size => size.category)
     sizes: Size[];
+
+    @OneToMany(() => Product, product => product.category)
+    products: Product[];
 }

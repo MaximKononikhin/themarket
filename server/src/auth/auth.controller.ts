@@ -21,6 +21,7 @@ import {GetCurrentUserData} from "../decorators/get-current-user.decorator";
 import {JwtPayloadWithRt} from "../refresh-token/types/jwtPayloadWithRt.type";
 import {FileInterceptor} from "@nestjs/platform-express";
 import {Express} from "express";
+import { JwtPayload } from 'src/refresh-token/types/jwtPayload.type';
 
 @Controller('auth')
 export class AuthController {
@@ -44,8 +45,8 @@ export class AuthController {
 
     @UseGuards(JwtAuthGuard)
     @Get('profile')
-    getProfile(@Request() req) {
-        return req.user;
+    getProfile(@GetCurrentUserData() user: JwtPayload) {
+        return user;
     }
 
     @UseGuards(RefreshJwtAuthGuard)
