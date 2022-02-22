@@ -10,6 +10,12 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe());
   app.use(cookieParser());
   app.useGlobalFilters(new UnauthorizedExceptionFilter());
+  app.enableCors({
+    // allowedHeaders:"*",
+    origin: "http://localhost:8080",
+    credentials: true,
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+  });
   config.update({
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,

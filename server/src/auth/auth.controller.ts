@@ -34,13 +34,11 @@ export class AuthController {
     }
 
     @Post("login")
+    @HttpCode(HttpStatus.OK)
     async login (@Body() loginDto: LoginUserDto, @Res({ passthrough: true }) res) {
         const {refresh_token, access_token} = await this.authService.login(loginDto);
         res.cookie("refreshToken", refresh_token, { httpOnly: true });
-
-        return {
-            access_token
-        }
+        res.cookie("accessToken", access_token, { httpOnly: true });
     }
 
     @UseGuards(JwtAuthGuard)
@@ -58,11 +56,6 @@ export class AuthController {
     ) {
        const {refresh_token, access_token} = await this.authService.refreshTokens(user.id, user.refreshToken);
        res.cookie("refreshToken", refresh_token, { httpOnly: true });
-
-       return {
-           access_token
-       }
+       res.cookie("accessToken", access_token, { httpOnly: true });
     }
-
-
 }

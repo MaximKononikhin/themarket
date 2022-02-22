@@ -1,0 +1,6 @@
+/.idea/
+/.next/
+/node_modules/
+/public/
+.eslintrc.js
+next-env.d.ts

@@ -1,0 +1,23 @@
+@font-face {
+  font-family: "Rany";
+  src: url("../resources/fonts/Rany-Bold.otf") format("otf");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Rany";
+  src: url("../resources/fonts/Rany-Light.otf") format("otf");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Rany";
+  src: url("../resources/fonts/Rany-Medium.otf") format("otf");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}

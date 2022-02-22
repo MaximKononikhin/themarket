@@ -1,25 +1,25 @@
 import styled from "styled-components";
-import Link from "next/link";
 
-import LogoIcon from "resources/logo.svg?sprite";
-import LoopIcon from "resources/loop.svg?sprite";
-import {css} from "styled-components";
+import { Button } from "components/button";
+
+import LogoIcon from "resources/icons/logo.svg?sprite";
+import LoopIcon from "resources/icons/loop.svg?sprite";
 
 export const Logo = styled(LogoIcon)`
-    width: 80px;
-    height: 12px;
+  width: 80px;
+  height: 12px;
 `;
 
 export const Header = styled.header`
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    width: 100%;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #d6e6e4;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #d6e6e4;
 `;
 
 export const Container = styled.div`
@@ -64,7 +64,7 @@ export const StyledLink = styled.a`
   padding: 27px 10px;
   position: relative;
   text-align: center;
-  
+
   :before {
     content: "";
     height: 2px;
@@ -72,7 +72,7 @@ export const StyledLink = styled.a`
     position: absolute;
     bottom: -1px;
   }
-  
+
   :hover {
     :before {
       background: #000;
@@ -86,30 +86,22 @@ export const LinksContainer = styled.div`
   align-items: center;
 `;
 
-export const LoginButton = styled.button`
+export const LoginButton = styled(Button)`
   font-size: 15px;
   color: #000;
   padding: 0;
   background: none;
   border: none;
-  cursor: pointer;
+  min-width: unset;
+  height: unset;
+
+  :hover {
+    background: none;
+    color: #000;
+  }
 `;
 
-export const SellButton = styled(LoginButton)`
-  width: 80px;
-  line-height: 40px;
+export const SellButton = styled(Button)`
   margin-left: 10px;
   margin-right: 40px;
-  background-color: #fff;
-  border: 1px solid #000;
-  font-size: 14px;
-  border-radius: 2px;
-  color: #000;
-  cursor: pointer;
-  transition: all .2s ease;
-  
-  :hover {
-    background-color: #000;
-    color: #fff;
-  }
-`
+`;

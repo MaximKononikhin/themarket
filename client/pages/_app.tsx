@@ -1,8 +1,8 @@
-import { NextComponentType, NextPageContext } from 'next';
-import type { AppProps } from 'next/app';
-import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { NextComponentType, NextPageContext } from "next";
+import type { AppProps } from "next/app";
+import { createGlobalStyle } from "styled-components";
 
-import PageTemplate from 'blocks/page-template';
+import PageTemplate from "blocks/page-template";
 import ModalProvider from "components/modal-provider";
 
 const GlobalStyle = createGlobalStyle`
@@ -12,27 +12,32 @@ const GlobalStyle = createGlobalStyle`
     
     * {
       box-sizing: border-box;
+      font-family: "Ramy", Helvetica, sans-serif, "Apple Color Emoji",
+      "Segoe UI Emoji", "Segoe UI Symbol";
+
     }
   }
 `;
 
 interface MyAppProps extends AppProps {
-    Component:  NextComponentType<NextPageContext, any, {}> & { PageTemplate: React.ElementType }
-    pageProps: any
+  Component: NextComponentType<NextPageContext, any> & {
+    PageTemplate: React.ElementType;
+  };
+  pageProps: any;
 }
 
 function MyApp({ Component, pageProps }: MyAppProps) {
-    const PageWrapper = Component.PageTemplate || PageTemplate;
+  const PageWrapper = Component.PageTemplate || PageTemplate;
 
-    return (
-        <PageWrapper>
-            <GlobalStyle />
-            <div id="content">
-                <Component {...pageProps} />
-            </div>
-            <ModalProvider />
-        </PageWrapper>
-      )
+  return (
+    <PageWrapper>
+      <GlobalStyle />
+      <div id="content">
+        <Component {...pageProps} />
+      </div>
+      <ModalProvider />
+    </PageWrapper>
+  );
 }
 
-export default MyApp
+export default MyApp;
