@@ -24,7 +24,8 @@
       "blocks/*": ["../blocks/*"],
       "components/*": ["../components/*"],
       "lib/*": ["../lib/*"],
-      "resources/*": ["../resources/*"]
+      "resources/*": ["../resources/*"],
+      "services/*": ["../services/*"]
     },
     "incremental": true
   },

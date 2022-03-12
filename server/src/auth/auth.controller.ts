@@ -22,15 +22,21 @@ import {JwtPayloadWithRt} from "../refresh-token/types/jwtPayloadWithRt.type";
 import {FileInterceptor} from "@nestjs/platform-express";
 import {Express} from "express";
 import { JwtPayload } from 'src/refresh-token/types/jwtPayload.type';
+import { UserService } from 'src/user/user.service';
 
 @Controller('auth')
 export class AuthController {
-    constructor(private authService: AuthService) {}
+    constructor(
+        private authService: AuthService,
+        private userService: UserService
+    ) {}
 
     @Post("registration")
-    async registration (@Body() dto: RegisterUserDto) {
-        const user = await this.authService.register(dto);
-        return user;
+    @HttpCode(HttpStatus.OK)
+    async registration (@Body() dto: RegisterUserDto, @Res({ passthrough: true }) res) {
+        const {refresh_token, access_token} = await this.authService.register(dto);
+        res.cookie("refreshToken", refresh_token, { httpOnly: true });
+        res.cookie("accessToken", access_token, { httpOnly: true });
     }
 
     @Post("login")
@@ -41,10 +47,17 @@ export class AuthController {
         res.cookie("accessToken", access_token, { httpOnly: true });
     }
 
+    @Post("logout")
+    @UseGuards(JwtAuthGuard)
+    logout(@Res({ passthrough: true }) res) {
+        res.clearCookie("refreshToken");
+        res.clearCookie("accessToken");
+    }
+
     @UseGuards(JwtAuthGuard)
     @Get('profile')
-    getProfile(@GetCurrentUserData() user: JwtPayload) {
-        return user;
+    async getProfile(@GetCurrentUserData() userInfo: JwtPayload) {
+        return await this.userService.getUserById(userInfo.id);
     }
 
     @UseGuards(RefreshJwtAuthGuard)

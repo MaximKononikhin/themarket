@@ -4,6 +4,7 @@ import { createGlobalStyle } from "styled-components";
 
 import PageTemplate from "blocks/page-template";
 import ModalProvider from "components/modal-provider";
+import { AuthProvider } from "lib/auth/auth-context";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -30,13 +31,15 @@ function MyApp({ Component, pageProps }: MyAppProps) {
   const PageWrapper = Component.PageTemplate || PageTemplate;
 
   return (
-    <PageWrapper>
-      <GlobalStyle />
-      <div id="content">
-        <Component {...pageProps} />
-      </div>
-      <ModalProvider />
-    </PageWrapper>
+    <AuthProvider>
+      <PageWrapper>
+        <GlobalStyle />
+        <div id="content">
+          <Component {...pageProps} />
+        </div>
+        <ModalProvider />
+      </PageWrapper>
+    </AuthProvider>
   );
 }
 

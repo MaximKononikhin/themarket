@@ -2,6 +2,7 @@ import Link from "next/link";
 import React from "react";
 
 import AuthModal from "blocks/auth-modal/auth-modal";
+import { useAuth } from "lib/auth/auth-context";
 import ModalService from "lib/modal-service";
 
 import {
@@ -15,10 +16,22 @@ import {
   Loop,
   SellButton,
   StyledLink,
+  UserContainer,
+  NoAvatarIcon,
+  MessageLink
 } from "./styles";
 
 const PageTemplate: React.FC = ({ children }) => {
+  const { user } = useAuth();
+
   const handleClick = () => ModalService.pushModal(<AuthModal />);
+
+  const userContent =(
+      <UserContainer>
+        <MessageLink href="/">Сообщения</MessageLink>
+        <NoAvatarIcon />
+      </UserContainer>);
+
   return (
     <>
       <Header>
@@ -36,7 +49,7 @@ const PageTemplate: React.FC = ({ children }) => {
           <StyledLink href="/">Женское</StyledLink>
           <LinksContainer>
             <SellButton>Продать</SellButton>
-            <LoginButton onClick={handleClick}>Войти</LoginButton>
+            {user ? userContent : <LoginButton onClick={handleClick}>Войти</LoginButton>}
           </LinksContainer>
         </Container>
       </Header>

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import authService from "../auth";
+import authService from "services/auth";
 
 const BASE_URL = "http://localhost:3000";
 

@@ -30,7 +30,7 @@ export class UserService {
 
 
     async getUserById(id: number) {
-        const user = await this.userRepository.findOne({where: {id}});
+        const {password, ...user} = await this.userRepository.findOne({where: {id}});
         return user;
     }
 

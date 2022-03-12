@@ -5,6 +5,7 @@ import { Container, Heading } from "blocks/login-form/styles";
 import { Field } from "components/field";
 import Form from "components/form";
 import SubmitButton from "components/submit-button";
+import { useAuth } from "lib/auth/auth-context";
 import {
   EMAIL_VALIDATOR,
   NAME_VALIDATOR,
@@ -22,8 +23,12 @@ type FormType = typeof defaultValues;
 const RegistrationForm = () => {
   const formContext = useForm({ defaultValues });
   const { register } = formContext;
+  const auth = useAuth();
 
-  const onSubmit = (values: FormType) => console.log(values);
+  const onSubmit = async (values: FormType) => {
+    const { name, email, password } = values;
+    await auth.register({ name, email, password });
+  };
 
   return (
     <Container>

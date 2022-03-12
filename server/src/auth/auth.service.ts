@@ -21,9 +21,11 @@ export class AuthService {
         }
 
         const hashPassword = await bcrypt.hash(registerUserDto.password, 5);
-        const {email, password, ...rest} = await this.userService.createUser({...registerUserDto, password: hashPassword});
+        const {email, id} = await this.userService.createUser({...registerUserDto, password: hashPassword});
 
-        return rest;
+        const tokens = await this.tokenService.getTokens(id, email);
+
+        return tokens;
     }
 
     async validate (loginUserDto: LoginUserDto) {

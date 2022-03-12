@@ -4,6 +4,7 @@ import { Button } from "components/button";
 
 import LogoIcon from "resources/icons/logo.svg?sprite";
 import LoopIcon from "resources/icons/loop.svg?sprite";
+import NoAvatar from "resources/icons/no-avatar.svg?sprite";
 
 export const Logo = styled(LogoIcon)`
   width: 80px;
@@ -57,14 +58,18 @@ export const Loop = styled(LoopIcon)`
   left: 10px;
 `;
 
-export const StyledLink = styled.a`
+export const MessageLink = styled.a`
   font-size: 16px;
   color: #000;
   text-decoration: none;
-  padding: 27px 10px;
   position: relative;
   text-align: center;
+  margin-right: 20px;
+`;
 
+export const StyledLink = styled(MessageLink)`
+  padding: 27px 10px;
+  
   :before {
     content: "";
     height: 2px;
@@ -105,3 +110,17 @@ export const SellButton = styled(Button)`
   margin-left: 10px;
   margin-right: 40px;
 `;
+
+export const UserContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const NoAvatarIcon = styled(NoAvatar)`
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+`;
+
