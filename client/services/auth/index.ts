@@ -1,18 +1,11 @@
 import axios from "axios";
 
-import { IUser } from "lib/types/auth";
+import { IUser, ILogin, IRegister } from "lib/types/auth";
 import createApiInstance from "services/api";
 
 const api = createApiInstance();
 
-export interface ILogin {
-  email: string;
-  password: string;
-}
 
-export interface IRegister extends ILogin {
-  name: string;
-}
 
 const authService = {
   profile: async (): Promise<IUser> => {

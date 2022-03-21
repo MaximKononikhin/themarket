@@ -1,9 +1,8 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
 import { assert } from "lib/assert";
-import { IUser } from "lib/types/auth";
+import { IUser, ILogin, IRegister } from "lib/types/auth";
 import authService from "services/auth";
-import { ILogin, IRegister } from "services/auth";
 
 type IProps = {
   children: React.ReactNode;

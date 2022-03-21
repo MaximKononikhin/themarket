@@ -25,7 +25,8 @@
       "components/*": ["../components/*"],
       "lib/*": ["../lib/*"],
       "resources/*": ["../resources/*"],
-      "services/*": ["../services/*"]
+      "services/*": ["../services/*"],
+      "models/*": ["../models/*"]
     },
     "incremental": true
   },

@@ -14,11 +14,11 @@ import {
   LoginButton,
   Logo,
   Loop,
-  SellButton,
+  MessageLink,
+  NoAvatarIcon,
+  SellLink,
   StyledLink,
   UserContainer,
-  NoAvatarIcon,
-  MessageLink
 } from "./styles";
 
 const PageTemplate: React.FC = ({ children }) => {
@@ -26,11 +26,12 @@ const PageTemplate: React.FC = ({ children }) => {
 
   const handleClick = () => ModalService.pushModal(<AuthModal />);
 
-  const userContent =(
-      <UserContainer>
-        <MessageLink href="/">Сообщения</MessageLink>
-        <NoAvatarIcon />
-      </UserContainer>);
+  const userContent = (
+    <UserContainer>
+      <MessageLink href="/">Сообщения</MessageLink>
+      <NoAvatarIcon />
+    </UserContainer>
+  );
 
   return (
     <>
@@ -48,8 +49,14 @@ const PageTemplate: React.FC = ({ children }) => {
           <StyledLink href="/">Мужское</StyledLink>
           <StyledLink href="/">Женское</StyledLink>
           <LinksContainer>
-            <SellButton>Продать</SellButton>
-            {user ? userContent : <LoginButton onClick={handleClick}>Войти</LoginButton>}
+            <Link href="/add-item">
+              <SellLink>Продать</SellLink>
+            </Link>
+            {user ? (
+              userContent
+            ) : (
+              <LoginButton onClick={handleClick}>Войти</LoginButton>
+            )}
           </LinksContainer>
         </Container>
       </Header>

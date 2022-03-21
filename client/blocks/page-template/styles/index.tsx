@@ -69,7 +69,7 @@ export const MessageLink = styled.a`
 
 export const StyledLink = styled(MessageLink)`
   padding: 27px 10px;
-  
+
   :before {
     content: "";
     height: 2px;
@@ -106,11 +106,6 @@ export const LoginButton = styled(Button)`
   }
 `;
 
-export const SellButton = styled(Button)`
-  margin-left: 10px;
-  margin-right: 40px;
-`;
-
 export const UserContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -124,3 +119,25 @@ export const NoAvatarIcon = styled(NoAvatar)`
   cursor: pointer;
 `;
 
+export const SellLink = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 80px;
+  line-height: 40px;
+  background-color: #fff;
+  border: 1px solid #000;
+  font-size: 14px;
+  border-radius: 2px;
+  color: #000;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-left: 10px;
+  margin-right: 40px;
+  text-decoration: none;
+
+  :hover {
+    background-color: #000;
+    color: #fff;
+  }
+`;

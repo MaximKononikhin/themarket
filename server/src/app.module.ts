@@ -17,6 +17,7 @@ import { Condition } from './entities/condition.entity';
 import { Product } from './entities/product.entity';
 import { S3Module } from './s3/s3.module';
 import { ProductPhoto } from './entities/product-photo.entity';
+import { DictionariesModule } from './dictionaries/dictionaries.module';
 
 @Module({
   controllers: [],
@@ -41,6 +42,7 @@ import { ProductPhoto } from './entities/product-photo.entity';
       RefreshTokenModule,
       FileModule,
       S3Module,
+      DictionariesModule,
   ]
 })
 export class AppModule {}
