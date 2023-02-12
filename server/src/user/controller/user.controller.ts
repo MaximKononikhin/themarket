@@ -1,6 +1,7 @@
 import {
 	Body,
 	Controller,
+	Delete,
 	FileTypeValidator,
 	HttpCode,
 	HttpStatus,
@@ -13,19 +14,19 @@ import {
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 
-import { diskStorage } from 'multer';
-import { parse } from 'path';
-import { v4 as uuid } from 'uuid';
-
 import { GetUser } from '@shared/decorators/get-user.decorator';
 import UserEntity from '@shared/entities/user.entity';
 import { UserService } from '@user/service/user.service';
 import { CookieAuthenticationGuard } from '@auth/guards/cookie-authentication.guard';
+import { FileService } from '@file/service/file.service';
 
 @Controller('user')
 @UseGuards(CookieAuthenticationGuard)
 export class UserController {
-	constructor(private readonly userService: UserService) {}
+	constructor(
+		private readonly userService: UserService,
+		private readonly fileService: FileService,
+	) {}
 
 	@HttpCode(HttpStatus.NO_CONTENT)
 	@Put()
@@ -33,32 +34,24 @@ export class UserController {
 		await this.userService.updateOne(id, user);
 	}
 
-	@HttpCode(HttpStatus.OK)
+	@HttpCode(HttpStatus.NO_CONTENT)
 	@Post('avatar')
-	@UseInterceptors(
-		FileInterceptor('avatar', {
-			storage: diskStorage({
-				destination: './uploads/avatars',
-				filename: (req, file, callback) => {
-					const filename =
-						parse(file.originalname).name.replace(/\s/g, '') +
-						uuid();
-					const extension = parse(file.originalname).ext;
-					callback(null, `${filename}${extension}`);
-				},
-			}),
-		}),
-	)
+	@UseInterceptors(FileInterceptor('avatar'))
 	async uploadAvatar(
 		@UploadedFile(
 			new ParseFilePipe({
 				validators: [new FileTypeValidator({ fileType: 'image/jpeg' })],
 			}),
 		)
-		file,
+		file: Express.Multer.File,
 		@GetUser('id') id: number,
 	) {
-		console.log(file);
-		return { imagePath: file.path };
+		await this.userService.uploadAvatar(id, file);
+	}
+
+	@HttpCode(HttpStatus.NO_CONTENT)
+	@Delete('avatar')
+	async deleteAvatar(@GetUser('id') id: number) {
+		await this.userService.deleteAvatar(id);
 	}
 }

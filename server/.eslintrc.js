@@ -32,7 +32,7 @@ module.exports = {
 					['^@nest'],
 					['^\\u0000'],
 					['^'],
-					['^@shared', '^@user', '@auth'],
+					['^@shared', '^@user', '@auth', '@file'],
 					// Relative imports.
 					// Anything that starts with a dot.
 					['^\\.'],

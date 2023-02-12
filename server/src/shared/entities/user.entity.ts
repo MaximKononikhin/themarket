@@ -16,6 +16,9 @@ class UserEntity {
 	@Exclude()
 	public password: string;
 
+	@Column({ nullable: true })
+	public avatar: string | null;
+
 	@BeforeInsert()
 	emailToLowerCase() {
 		this.email = this.email.toLowerCase();
