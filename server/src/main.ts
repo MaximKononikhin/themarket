@@ -1,6 +1,7 @@
 import { ClassSerializerInterceptor } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { NestFactory, Reflector } from '@nestjs/core';
+import { NestExpressApplication } from '@nestjs/platform-express';
 
 import { TypeormStore } from 'connect-typeorm';
 import * as session from 'express-session';
@@ -13,7 +14,7 @@ import { ValidationPipe } from '@shared/pipes/validation.pipe';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
-	const app = await NestFactory.create(AppModule);
+	const app = await NestFactory.create<NestExpressApplication>(AppModule);
 	const configService = app.get(ConfigService);
 	app.useGlobalPipes(new ValidationPipe());
 
@@ -38,6 +39,7 @@ async function bootstrap() {
 	app.useGlobalInterceptors(
 		new ClassSerializerInterceptor(app.get(Reflector)),
 	);
+
 	await app.listen(configService.get<string>('PORT'));
 }
 

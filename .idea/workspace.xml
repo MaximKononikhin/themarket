@@ -1,37 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f2f952db-fc48-49c9-991d-35a803ec71b9" name="Changes" comment="more tests">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/.dockerignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/.eslintignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/auth/guards/cookie-authentication.guard.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/auth/guards/local-auth.guard.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/auth/guards/login-with-credentials.guard.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/auth/strategies/local.strategy.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/auth/utils/session-serializer.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/shared/constants/constraints.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/shared/decorators/get-user.decorator.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/shared/decorators/logout.decorator.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/shared/entities/sesson.entity.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/shared/pipes/validation.pipe.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="f2f952db-fc48-49c9-991d-35a803ec71b9" name="Changes" comment="auth logic">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/.env" beforeDir="false" afterPath="$PROJECT_DIR$/server/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/.eslintrc.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/shared/entities/user.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/shared/entities/user.entity.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/user/controller/user.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/user/controller/user.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/user/models/user.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/user/models/user.interface.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/user/service/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/user/service/user.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/user/user.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/user/user.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,6 +67,8 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/server" />
+      <recent name="$PROJECT_DIR$/server/src" />
       <recent name="$PROJECT_DIR$/server/src/shared/pipes" />
       <recent name="$PROJECT_DIR$" />
     </key>
@@ -303,7 +281,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674204709249</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="auth logic">
+      <created>1676198074647</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1676198074647</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -332,6 +317,7 @@
     <MESSAGE value="notification tests are done" />
     <MESSAGE value="fix test" />
     <MESSAGE value="more tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="more tests" />
+    <MESSAGE value="auth logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="auth logic" />
   </component>
 </project>
