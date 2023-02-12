@@ -1,4 +1,4 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 
 import * as fs from 'fs';
 import * as path from 'path';
@@ -17,9 +17,8 @@ export class FileService {
 			fs.writeFileSync(path.join(filePath, fileName), file.buffer);
 			return fileName;
 		} catch (e) {
-			throw new HttpException(
+			throw new InternalServerErrorException(
 				'Произошла ошибка при записи файла',
-				HttpStatus.INTERNAL_SERVER_ERROR,
 			);
 		}
 	}
@@ -29,16 +28,14 @@ export class FileService {
 			const filePath = path.resolve(__dirname, '../../static');
 
 			if (!fs.existsSync(filePath)) {
-				throw new HttpException(
-					'Произошла ошибка при записи файла',
-					HttpStatus.INTERNAL_SERVER_ERROR,
+				throw new InternalServerErrorException(
+					'Произошла ошибка при удалении файла',
 				);
 			}
 			fs.unlinkSync(path.join(filePath, fileName));
 		} catch (e) {
-			throw new HttpException(
-				'Произошла ошибка при записи файла',
-				HttpStatus.INTERNAL_SERVER_ERROR,
+			throw new InternalServerErrorException(
+				'Произошла ошибка при удалении файла',
 			);
 		}
 	}

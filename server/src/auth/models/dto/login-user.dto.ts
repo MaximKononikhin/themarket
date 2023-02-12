@@ -6,7 +6,7 @@ import {
 	TOO_SHORT_PASSWORD,
 } from '@shared/constants/constraints';
 
-export class AuthDto {
+export class LoginUserDto {
 	@IsEmail(undefined, { message: INVALID_EMAIL })
 	email: string;
 

@@ -3,8 +3,8 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { compare, hash } from 'bcrypt';
 
 import { UserService } from '@user/service/user.service';
-import { AuthDto } from '@auth/models/dto/auth.dto';
 import { CreateUserDto } from '@auth/models/dto/create-user.dto';
+import { LoginUserDto } from '@auth/models/dto/login-user.dto';
 
 @Injectable()
 export class AuthService {
@@ -27,7 +27,7 @@ export class AuthService {
 		});
 	}
 
-	async validateUser(dto: AuthDto) {
+	async validateUser(dto: LoginUserDto) {
 		const user = await this.userService.findByEmail(dto.email);
 
 		if (user) {

@@ -2,6 +2,7 @@ import { ClassSerializerInterceptor } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { NestFactory, Reflector } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 import { TypeormStore } from 'connect-typeorm';
 import * as session from 'express-session';
@@ -39,6 +40,14 @@ async function bootstrap() {
 	app.useGlobalInterceptors(
 		new ClassSerializerInterceptor(app.get(Reflector)),
 	);
+
+	const config = new DocumentBuilder()
+		.setTitle('Themarket API')
+		.setVersion('1.0')
+		.build();
+
+	const document = SwaggerModule.createDocument(app, config);
+	SwaggerModule.setup('api', app, document);
 
 	await app.listen(configService.get<string>('PORT'));
 }
