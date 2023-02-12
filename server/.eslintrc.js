@@ -13,7 +13,6 @@ module.exports = {
 	extends: [
 		'plugin:@typescript-eslint/recommended',
 		'plugin:prettier/recommended',
-		'plugin:nestjs/recommended',
 	],
 	root: true,
 	env: {
@@ -33,13 +32,23 @@ module.exports = {
 					['^@nest'],
 					['^\\u0000'],
 					['^'],
-					['^@shared', '^@user'],
+					['^@shared', '^@user', '@auth'],
 					// Relative imports.
 					// Anything that starts with a dot.
 					['^\\.'],
 				],
 			},
 		],
-		indent: ['error', 'tab'],
+		indent: [
+			'error',
+			'tab',
+			{
+				ignoredNodes: [
+					`FunctionExpression > .params[decorators.length > 0]`,
+					`FunctionExpression > .params > :matches(Decorator, :not(:first-child))`,
+					`ClassBody.body > PropertyDefinition[decorators.length > 0] > .key`,
+				],
+			},
+		],
 	},
 };

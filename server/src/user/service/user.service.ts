@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 
-import { from, Observable } from 'rxjs';
 import { Repository } from 'typeorm';
 
 import UserEntity from '@shared/entities/user.entity';
 import { User } from '@user/models/user.interface';
+import { CreateUserDto } from '@auth/models/dto/create-user.dto';
 
 @Injectable()
 export class UserService {
@@ -14,23 +14,27 @@ export class UserService {
 		private userRepository: Repository<UserEntity>,
 	) {}
 
-	create(user: User): Observable<User> {
-		return from(this.userRepository.save(user));
+	async create(user: CreateUserDto) {
+		return await this.userRepository.save(user);
 	}
 
-	findOne(id: number): Observable<User> {
-		return from(this.userRepository.findOne({ where: { id } }));
+	async findById(id: number): Promise<UserEntity | null> {
+		return await this.userRepository.findOne({ where: { id } });
 	}
 
-	findAll(): Observable<User[]> {
-		return from(this.userRepository.find());
+	async findAll() {
+		return await this.userRepository.find();
 	}
 
-	deleteOne(id: number): Observable<any> {
-		return from(this.userRepository.delete(id));
+	async findByEmail(email: string): Promise<UserEntity | null> {
+		return await this.userRepository.findOne({ where: { email } });
 	}
 
-	updateOne(id: number, user: User): Observable<any> {
-		return from(this.userRepository.update(id, user));
+	async deleteOne(id: number) {
+		return await this.userRepository.delete(id);
+	}
+
+	async updateOne(id: number, user: User) {
+		return await this.userRepository.update(id, user);
 	}
 }

@@ -2,16 +2,36 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f2f952db-fc48-49c9-991d-35a803ec71b9" name="Changes" comment="more tests">
-      <change afterPath="$PROJECT_DIR$/server/.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/app.controller.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/app.controller.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/app.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/app.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/database/database.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/shared/entities/user.entity.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/.dockerignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/.eslintignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/auth/guards/cookie-authentication.guard.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/auth/guards/local-auth.guard.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/auth/guards/login-with-credentials.guard.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/auth/strategies/local.strategy.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/auth/utils/session-serializer.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/shared/constants/constraints.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/shared/decorators/get-user.decorator.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/shared/decorators/logout.decorator.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/shared/entities/sesson.entity.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/shared/pipes/validation.pipe.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/.env" beforeDir="false" afterPath="$PROJECT_DIR$/server/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/.eslintrc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/shared/entities/user.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/shared/entities/user.entity.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/user/controller/user.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/user/controller/user.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/user/models/user.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/user/models/user.interface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/user/service/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/user/service/user.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/user/user.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/user/user.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +55,7 @@
     <option name="myRunOnSave" value="true" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/server" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -64,17 +84,18 @@
     &quot;nodejs.jest.jest_package&quot;: &quot;/Users/MKononikhin/Desktop/themarket/server/node_modules/jest&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/MKononikhin/Desktop/themarket/server/node_modules/prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
     &quot;ts.external.directory.path&quot;: &quot;/Users/MKononikhin/Desktop/themarket/server/node_modules/typescript/lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/server/src/shared/pipes" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.format">
+  <component name="RunManager" selected="npm.fix">
     <configuration name="AuthController (e2e)" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -115,6 +136,16 @@
       </test-names>
       <method v="2" />
     </configuration>
+    <configuration name="fix" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/server/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="fix" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="format" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/server/package.json" />
       <command value="run" />
@@ -135,6 +166,14 @@
       <envs />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Jest.AuthController" />
+      <item itemvalue="Jest.AuthController (e2e)" />
+      <item itemvalue="Jest.AuthController (e2e)./registration POST" />
+      <item itemvalue="npm.fix" />
+      <item itemvalue="npm.format" />
+      <item itemvalue="npm.lint" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="npm.format" />
@@ -197,6 +236,9 @@
       <workItem from="1675276576100" duration="332000" />
       <workItem from="1675276938134" duration="730000" />
       <workItem from="1675277680369" duration="5205000" />
+      <workItem from="1675951205839" duration="33000" />
+      <workItem from="1676010227040" duration="7000" />
+      <workItem from="1676108605772" duration="25017000" />
     </task>
     <task id="LOCAL-00001" summary="starting client from docker">
       <created>1665861236810</created>
@@ -266,20 +308,6 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-    <option name="exactExcludedFiles">
-      <list>
-        <option value="$PROJECT_DIR$/server/src/database/database.module.js" />
-        <option value="$PROJECT_DIR$/server/src/database/database.module.js.map" />
-        <option value="$PROJECT_DIR$/server/src/database/database.module.d.ts" />
-        <option value="$PROJECT_DIR$/server/src/shared/entities/user.entity.d.ts" />
-        <option value="$PROJECT_DIR$/server/src/shared/entities/user.entity.js.map" />
-        <option value="$PROJECT_DIR$/server/src/shared/entities/user.entity.js" />
-        <option value="$PROJECT_DIR$/server/src/app.service.js" />
-        <option value="$PROJECT_DIR$/server/src/app.module.js" />
-        <option value="$PROJECT_DIR$/server/src/main.js" />
-        <option value="$PROJECT_DIR$/server/src/app.controller.js" />
-      </list>
-    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -293,6 +321,9 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/server" />
+    </ignored-roots>
     <MESSAGE value="starting client from docker" />
     <MESSAGE value="protected route" />
     <MESSAGE value="notification" />
