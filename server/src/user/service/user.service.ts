@@ -35,6 +35,6 @@ export class UserService {
 	}
 
 	async updateOne(id: number, user: User) {
-		return await this.userRepository.update(id, user);
+		await this.userRepository.update(id, user);
 	}
 }

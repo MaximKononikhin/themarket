@@ -1,37 +1,25 @@
 import {
 	Body,
 	Controller,
-	Delete,
-	Get,
-	Param,
-	ParseIntPipe,
+	HttpCode,
+	HttpStatus,
 	Put,
+	UseGuards,
 } from '@nestjs/common';
 
+import { GetUser } from '@shared/decorators/get-user.decorator';
 import UserEntity from '@shared/entities/user.entity';
 import { UserService } from '@user/service/user.service';
+import { CookieAuthenticationGuard } from '@auth/guards/cookie-authentication.guard';
 
 @Controller('user')
+@UseGuards(CookieAuthenticationGuard)
 export class UserController {
 	constructor(private readonly userService: UserService) {}
 
-	@Get(':id')
-	findOne(@Param('id', ParseIntPipe) id: number) {
-		return this.userService.findById(id);
-	}
-
-	@Get()
-	findAll() {
-		return this.userService.findAll();
-	}
-
-	@Delete(':id')
-	deleteOne(@Param('id', ParseIntPipe) id: number) {
-		return this.userService.deleteOne(id);
-	}
-
-	@Put(':id')
-	updateOne(@Param('id', ParseIntPipe) id: number, @Body() user: UserEntity) {
-		return this.userService.updateOne(id, user);
+	@HttpCode(HttpStatus.NO_CONTENT)
+	@Put()
+	async updateOne(@Body() user: UserEntity, @GetUser('id') id: number) {
+		await this.userService.updateOne(id, user);
 	}
 }

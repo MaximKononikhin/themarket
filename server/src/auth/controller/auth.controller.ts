@@ -3,6 +3,7 @@ import {
 	Controller,
 	Get,
 	HttpCode,
+	HttpStatus,
 	Post,
 	UseGuards,
 } from '@nestjs/common';
@@ -19,25 +20,27 @@ import { AuthService } from '@auth/service/auth.service';
 export class AuthController {
 	constructor(private readonly authService: AuthService) {}
 
+	@HttpCode(HttpStatus.NO_CONTENT)
 	@Post('signup')
-	signUp(@Body() dto: CreateUserDto) {
-		return this.authService.signUp(dto);
+	async signUp(@Body() dto: CreateUserDto) {
+		await this.authService.signUp(dto);
 	}
 
-	@HttpCode(200)
+	@HttpCode(HttpStatus.NO_CONTENT)
 	@Post('signin')
 	@UseGuards(LogInWithCredentialsGuard)
 	async signIn() {
 		return;
 	}
 
+	@HttpCode(HttpStatus.OK)
 	@UseGuards(CookieAuthenticationGuard)
 	@Get()
 	async authenticate(@GetUser() user: User) {
 		return user;
 	}
 
-	@HttpCode(200)
+	@HttpCode(HttpStatus.NO_CONTENT)
 	@UseGuards(CookieAuthenticationGuard)
 	@Post('logout')
 	async logOut(@Logout() logout: VoidFunction) {
