@@ -13,7 +13,7 @@ const ROOT_PATH = path.join(__dirname, "../..");
 
 const config: Configuration = configure({
     mode: "production",
-    entry: "./src/index.tsx",
+    entry: "./src/app.tsx",
     output: {
         filename: "[name].[contenthash].js",
         path: path.resolve(ROOT_PATH, "dist"),

@@ -1,6 +1,6 @@
-// import { pathsToModuleNameMapper } from "ts-jest";
-//
-// import { compilerOptions } from "./tsconfig.json";
+import { pathsToModuleNameMapper } from "ts-jest";
+
+import { compilerOptions } from "./tsconfig.json";
 
 const config = {
     testEnvironment: "jsdom",
@@ -12,9 +12,9 @@ const config = {
             "<rootDir>/__mocks__/fileMock.js",
 
         ".+\\.svg?.+$": "<rootDir>/__mocks__/svg.js",
-        // ...pathsToModuleNameMapper(compilerOptions.paths, {
-        //     prefix: "<rootDir>",
-        // }),
+        ...pathsToModuleNameMapper(compilerOptions.paths, {
+            prefix: "<rootDir>",
+        }),
     },
 };
 

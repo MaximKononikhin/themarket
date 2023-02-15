@@ -2,6 +2,8 @@ import Dotenv from "dotenv-webpack";
 import path from "path";
 import merge from "webpack-merge";
 
+const ROOT_PATH = path.join(__dirname, "../..");
+
 /**
  * Common config for webpack
  * @type {Object}
@@ -77,6 +79,14 @@ const defaultConfig = {
     },
     resolve: {
         extensions: [".tsx", ".ts", ".js"],
+        alias: {
+            "@app": path.join(ROOT_PATH + "/src/app"),
+            "@pages": path.join(ROOT_PATH + "/src/pages"),
+            "@widgets": path.join(ROOT_PATH + "/src/widgets"),
+            "@features": path.join(ROOT_PATH + "/src/features"),
+            "@entities": path.join(ROOT_PATH + "/src/entities"),
+            "@shared": path.join(ROOT_PATH + "/src/shared"),
+        },
     },
 };
 

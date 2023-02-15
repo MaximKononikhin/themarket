@@ -19,7 +19,7 @@ const config: Configuration = configure({
     output: {
         publicPath: "/",
     },
-    entry: "./src/index.tsx",
+    entry: "./src/app.tsx",
     plugins: [
         new HtmlWebpackPlugin({
             template: "./public/index.html",
