@@ -13,7 +13,7 @@ const ROOT_PATH = path.join(__dirname, "../..");
 
 const config: Configuration = configure({
     mode: "production",
-    entry: "./src/app.tsx",
+    entry: "./src/index.tsx",
     output: {
         filename: "[name].[contenthash].js",
         path: path.resolve(ROOT_PATH, "dist"),
@@ -23,7 +23,6 @@ const config: Configuration = configure({
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: "./public/index.html",
-            favicon: "./public/favicon.ico",
         }),
     ],
 });

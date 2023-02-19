@@ -57,11 +57,9 @@ const defaultConfig = {
                 test: /\.(ttf|eot|woff|woff2)$/,
                 type: "asset/inline",
                 loader: "file-loader",
-                include: path.resolve(__dirname, "./src/assets"),
+                include: path.resolve(__dirname, "./src/shared/assets/fonts"),
                 options: {
                     name: "[name].[ext]",
-                    // TODO: проверить, почему не собирается в папку fonts
-                    outputPath: "fonts/",
                     esModule: false,
                 },
             },
