@@ -41,13 +41,15 @@ async function bootstrap() {
 		new ClassSerializerInterceptor(app.get(Reflector)),
 	);
 
+	app.setGlobalPrefix('api');
+
 	const config = new DocumentBuilder()
 		.setTitle('Themarket API')
 		.setVersion('1.0')
 		.build();
 
 	const document = SwaggerModule.createDocument(app, config);
-	SwaggerModule.setup('api', app, document);
+	SwaggerModule.setup('swagger', app, document);
 
 	await app.listen(configService.get<string>('PORT'));
 }

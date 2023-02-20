@@ -53,7 +53,6 @@
                         "^@entities",
                         "^@shared"
                     ],
-                    ["^assets", "^styles"],
                     // Relative imports.
                     // Anything that starts with a dot.
                     ["^\\."]
