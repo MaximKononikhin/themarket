@@ -1,6 +1,7 @@
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
 
-import * as fs from 'fs';
+import * as fsSync from 'fs';
+import * as fs from 'fs/promises';
 import * as path from 'path';
 import * as uuid from 'uuid';
 
@@ -11,10 +12,12 @@ export class FileService {
 			const fileName = uuid.v4() + '.jpg';
 			const filePath = path.resolve(__dirname, '../../static');
 
-			if (!fs.existsSync(filePath)) {
-				fs.mkdirSync(filePath, { recursive: true });
+			const isPathExist = fsSync.existsSync(filePath);
+
+			if (!isPathExist) {
+				await fs.mkdir(filePath, { recursive: true });
 			}
-			fs.writeFileSync(path.join(filePath, fileName), file.buffer);
+			await fs.writeFile(path.join(filePath, fileName), file.buffer);
 			return fileName;
 		} catch (e) {
 			throw new InternalServerErrorException(
@@ -27,12 +30,12 @@ export class FileService {
 		try {
 			const filePath = path.resolve(__dirname, '../../static');
 
-			if (!fs.existsSync(filePath)) {
+			if (!fsSync.existsSync(filePath)) {
 				throw new InternalServerErrorException(
 					'Произошла ошибка при удалении файла',
 				);
 			}
-			fs.unlinkSync(path.join(filePath, fileName));
+			await fs.unlink(path.join(filePath, fileName));
 		} catch (e) {
 			throw new InternalServerErrorException(
 				'Произошла ошибка при удалении файла',

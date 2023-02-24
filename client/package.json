@@ -18,17 +18,21 @@
         "types:openapi": "openapi -i http://localhost:5000/swagger-json -o src/shared/api/openapi"
     },
     "dependencies": {
+        "compose-function": "^3.0.3",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
+        "react-redux": "^8.0.5",
         "react-router-dom": "^6.4.3"
     },
     "devDependencies": {
+        "@types/compose-function": "^0.0.30",
         "@babel/core": "^7.20.2",
         "@babel/plugin-transform-runtime": "^7.19.6",
         "@babel/preset-env": "^7.20.2",
         "@babel/preset-react": "^7.18.6",
         "@babel/preset-typescript": "^7.18.6",
         "@babel/runtime": "^7.20.1",
+        "@reduxjs/toolkit": "^1.9.3",
         "@svgr/webpack": "^6.5.1",
         "@testing-library/jest-dom": "^5.16.5",
         "@testing-library/react": "^13.4.0",
@@ -37,6 +41,7 @@
         "@types/jest": "^29.1.2",
         "@types/react": "^18.0.25",
         "@types/react-dom": "^18.0.8",
+        "@types/react-redux": "^7.1.25",
         "@types/webpack-dev-server": "^4.7.2",
         "@typescript-eslint/eslint-plugin": "^5.42.1",
         "@typescript-eslint/parser": "^5.43.0",
