@@ -1,4 +1,4 @@
 export type IError = {
-    statusCode?: number;
+    statusCode: number;
     message: string;
 };

@@ -1,127 +1,34 @@
-import { useSelector } from "react-redux";
+import { createEffect, createEvent, createStore, sample } from "effector";
+import { useStore } from "effector-react";
 
-import {
-    AnyAction,
-    createAsyncThunk,
-    createSlice,
-    PayloadAction,
-} from "@reduxjs/toolkit";
+import { ApiError, AuthService, UserEntity } from "@shared/api";
+import { Maybe } from "@shared/types";
 
-import {
-    AuthService,
-    CreateUserDto,
-    LoginUserDto,
-    UserEntity,
-} from "@shared/api";
-import { REJECTED_POSTFIX } from "@shared/lib";
-import { IError, Maybe } from "@shared/types";
+export const $user = createStore<Maybe<UserEntity>>(null);
+export const $error = createStore<Maybe<ApiError>>(null);
 
-import {
-    GET_USER,
-    LOGIN_USER,
-    LOGOUT_USER,
-    REGISTER_USER,
-    USER_PREFIX,
-} from "./actions";
+const getUser = createEvent();
 
-type UserState = {
-    profile: Maybe<UserEntity>;
-    isLoading: boolean;
-    error: Maybe<IError, undefined>;
-};
+const getUserFx = createEffect<void, UserEntity, ApiError>(
+    async () => await AuthService.authControllerAuthenticate()
+);
 
-const initialState: UserState = {
-    profile: null,
-    isLoading: true,
-    error: undefined,
-};
-
-export const getUser = createAsyncThunk<
-    UserEntity,
-    void,
-    { rejectValue: IError }
->(GET_USER, async (_, { rejectWithValue }) => {
-    try {
-        return await AuthService.authControllerAuthenticate();
-    } catch (err: any) {
-        return rejectWithValue({
-            message: err.body.message,
-            statusCode: err.body.statusCode,
-        });
-    }
+sample({
+    clock: getUser,
+    target: getUserFx,
 });
 
-export const loginUser = createAsyncThunk(
-    LOGIN_USER,
-    async (data: LoginUserDto, { dispatch, rejectWithValue }) => {
-        try {
-            await AuthService.authControllerSignIn(data);
-            dispatch(getUser());
-        } catch (err: any) {
-            return rejectWithValue({
-                message: err.body.message,
-                statusCode: err.body.statusCode,
-            });
-        }
-    }
-);
+export const $userLoading = getUserFx.pending;
 
-export const registerUser = createAsyncThunk(
-    REGISTER_USER,
-    async (data: CreateUserDto, { dispatch, rejectWithValue }) => {
-        try {
-            await AuthService.authControllerSignUp(data);
-            await AuthService.authControllerSignIn(data);
-            dispatch(getUser());
-        } catch (err: any) {
-            return rejectWithValue({
-                message: err.body.message,
-                statusCode: err.body.statusCode,
-            });
-        }
-    }
-);
+$user.on(getUserFx.doneData, (_, user) => user);
 
-export const logoutUser = createAsyncThunk(
-    LOGOUT_USER,
-    async () => await AuthService.authControllerLogOut()
-);
+$error.on(getUserFx.failData, (_, error) => error);
+$error.on(getUserFx.doneData, () => null);
 
-const userSlice = createSlice({
-    name: "user",
-    initialState,
-    reducers: {},
-    extraReducers: (builder) => {
-        builder
-            .addCase(getUser.fulfilled, (state, { payload }) => {
-                state.profile = payload;
-                state.isLoading = false;
-                state.error = undefined;
-            })
-            .addCase(logoutUser.fulfilled, (state) => {
-                state.profile = null;
-            })
-            .addMatcher(
-                (action: AnyAction) =>
-                    action.type.startsWith(USER_PREFIX) &&
-                    action.type.endsWith(REJECTED_POSTFIX),
-                (state, { payload }: PayloadAction<IError>) => {
-                    state.error = payload;
-                    state.isLoading = false;
-                }
-            );
-    },
-});
+const useUser = () => useStore($user);
+const useUserError = () => useStore($error);
+const useUserLoading = () => useStore($userLoading);
 
-export const { reducer } = userSlice;
-
-export const useUser = () =>
-    useSelector<RootState, Maybe<UserEntity>>((state) => state.user.profile);
-
-export const useError = () =>
-    useSelector<RootState, Maybe<IError, undefined>>(
-        (state) => state.user.error
-    );
-
-export const useLoading = () =>
-    useSelector<RootState, boolean>((state) => state.user.isLoading);
+export const events = { getUser };
+export const selectors = { useUser, useUserError, useUserLoading };
+export const effects = { getUserFx };

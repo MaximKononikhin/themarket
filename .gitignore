@@ -2,3 +2,4 @@
 /.idea
 /.idea/workspace.xml
 /client/node_modules/
+/client/coverage
