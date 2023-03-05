@@ -5,7 +5,7 @@ import userEvent from "@testing-library/user-event";
 
 import { InputProps } from "@shared/components/input/types";
 
-import Input from "../.";
+import { Input } from "../.";
 
 interface DemoProps extends Omit<InputProps, "value" | "placeholder"> {
     placeholder?: string;
@@ -110,7 +110,7 @@ describe("Input component", () => {
         const handeChange = jest.fn();
 
         const { getByPlaceholderText, container } = render(
-            <Demo onChange={handeChange} type="textarea" />
+            <Demo onChange={handeChange} design="textarea" />
         );
 
         expect(getByPlaceholderText(PLACEHOLDER_TEXT)).toBeInTheDocument();
@@ -123,7 +123,7 @@ describe("Input component", () => {
         const { getByText, container } = render(
             <Demo
                 onChange={handeChange}
-                type="textarea"
+                design="textarea"
                 error={ERROR}
                 errorType="static"
             />
@@ -131,47 +131,6 @@ describe("Input component", () => {
 
         expect(getByText(ERROR)).toBeInTheDocument();
         expect(getByText(ERROR)).toHaveClass("error__static");
-        expect(container).toMatchSnapshot();
-    });
-
-    it("should renders input with social-icons", () => {
-        const handeChange = jest.fn();
-        const VK_INPUT = "vk-input";
-        const VIBER_INPUT = "viber-input";
-        const TG_INPUT = "tg-input";
-
-        const { getByPlaceholderText, container } = render(
-            <>
-                <Demo
-                    onChange={handeChange}
-                    type="input"
-                    error={ERROR}
-                    iconName="vk"
-                    errorType="static"
-                    placeholder={VK_INPUT}
-                />
-                <Demo
-                    onChange={handeChange}
-                    type="input"
-                    error={ERROR}
-                    iconName="tg"
-                    errorType="static"
-                    placeholder={TG_INPUT}
-                />
-                <Demo
-                    onChange={handeChange}
-                    type="input"
-                    error={ERROR}
-                    iconName="viber"
-                    errorType="static"
-                    placeholder={VIBER_INPUT}
-                />
-            </>
-        );
-
-        expect(getByPlaceholderText(VK_INPUT)).toBeInTheDocument();
-        expect(getByPlaceholderText(TG_INPUT)).toBeInTheDocument();
-        expect(getByPlaceholderText(VIBER_INPUT)).toBeInTheDocument();
         expect(container).toMatchSnapshot();
     });
 });

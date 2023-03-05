@@ -5,7 +5,7 @@ import cn from "classnames";
 import styles from "./index.module.scss";
 import { ButtonProps } from "./types";
 
-const Button: React.FC<ButtonProps> = ({
+export const Button: React.FC<ButtonProps> = ({
     testId,
     children,
     className,
@@ -19,5 +19,3 @@ const Button: React.FC<ButtonProps> = ({
         </button>
     );
 };
-
-export default Button;

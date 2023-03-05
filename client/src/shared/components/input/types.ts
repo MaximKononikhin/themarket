@@ -1,11 +1,11 @@
 import { InputHTMLAttributes, ReactNode } from "react";
 
-import { Type } from "components/typography/types";
+import { Type } from "../typography/type";
 
 export interface InputProps
     extends InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
     /** Тип инпута **/
-    type?: "input" | "textarea";
+    design?: "input" | "textarea";
     /** Ширина инпута **/
     width?: "wide" | "normal" | "small";
     /** Лейбл **/
@@ -16,8 +16,6 @@ export interface InputProps
     error?: string;
     /** Тип ошибки **/
     errorType?: "absolute" | "static";
-    /** Иконка соц-сети **/
-    iconName?: "vk" | "viber" | "tg" | "link";
     /** labelStyle **/
     labelStyle?: Extract<Type, "header-1" | "header-2">;
     /** стилизация **/

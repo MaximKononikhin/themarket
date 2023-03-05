@@ -3,7 +3,7 @@ import React from "react";
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-import Button from "@shared/components/button";
+import { Button } from "@shared/components/button";
 
 const TEST_CONTENT = "test";
 

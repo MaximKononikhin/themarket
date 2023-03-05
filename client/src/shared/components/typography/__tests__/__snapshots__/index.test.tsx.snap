@@ -1,5 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Typography component should render component with type error 1`] = `
+<div>
+  <p
+    class="textError"
+    data-testid="test_error"
+  >
+    error
+  </p>
+</div>
+`;
+
 exports[`Typography component should render component with type header-1 1`] = `
 <div>
   <h1

@@ -2,7 +2,7 @@ import React from "react";
 
 import { render } from "@testing-library/react";
 
-import Group from "../index";
+import { Group } from "../index";
 import { GroupProps } from "../types";
 
 const GROUP_PROPS: GroupProps = {

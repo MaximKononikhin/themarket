@@ -1,6 +1,7 @@
 import { allSettled, fork } from "effector";
 
-import { ApiError, UserEntity } from "@shared/api";
+import { UserEntity } from "@shared/api";
+import { apiErrorMock } from "@shared/lib/constants";
 
 import { $error, $user, effects, events } from "../.";
 
@@ -10,12 +11,6 @@ const userMock: UserEntity = {
     email: "test@gmail.com",
     avatar: null,
 };
-
-const userErrorMock: ApiError = new ApiError(
-    { method: "GET", url: "" },
-    { url: "", ok: false, status: 400, statusText: "400", body: {} },
-    "Error"
-);
 
 describe("entities/userModel", () => {
     it("user and userError should be null", () => {
@@ -39,7 +34,7 @@ describe("entities/userModel", () => {
 
     it("should throw error", async () => {
         const fakeGetUserFx = jest.fn(() => {
-            throw userErrorMock;
+            throw apiErrorMock;
         });
 
         const scope = fork({

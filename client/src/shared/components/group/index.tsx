@@ -5,7 +5,7 @@ import cn from "classnames";
 import styles from "./index.module.scss";
 import { GroupProps } from "./types";
 
-const Group: React.FC<PropsWithChildren<GroupProps>> = (props) => {
+export const Group: React.FC<PropsWithChildren<GroupProps>> = (props) => {
     const classNames = cn(props.className, {
         [styles.group]: true,
     });
@@ -26,5 +26,3 @@ const Group: React.FC<PropsWithChildren<GroupProps>> = (props) => {
         </div>
     );
 };
-
-export default Group;

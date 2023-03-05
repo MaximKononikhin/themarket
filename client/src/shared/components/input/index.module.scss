@@ -70,12 +70,7 @@
 
 .input {
     @extend .input__common;
-    height: 44px;
-}
-
-.inputSocial {
-    @extend .input__common;
-    padding-left: 46px;
+    max-height: 44px;
 }
 
 .textarea {

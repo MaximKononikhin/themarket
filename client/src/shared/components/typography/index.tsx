@@ -5,7 +5,7 @@ import cn from "classnames";
 import styles from "./index.module.scss";
 import { TypographyProps } from "./type";
 
-const Typography: React.FC<TypographyProps> = ({
+export const Typography: React.FC<TypographyProps> = ({
     className,
     type,
     children,
@@ -43,6 +43,7 @@ const Typography: React.FC<TypographyProps> = ({
         [styles.textSecond]: type === "text-2",
         [styles.textThird]: type === "text-3",
         [styles.textTwoMedium]: type === "text-2-medium",
+        [styles.textError]: type === "error",
     });
 
     return (
@@ -51,5 +52,3 @@ const Typography: React.FC<TypographyProps> = ({
         </p>
     );
 };
-
-export default Typography;

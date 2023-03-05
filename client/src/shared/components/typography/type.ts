@@ -8,6 +8,7 @@ export const TYPOGRAPHY = [
     "text-2",
     "text-2-medium",
     "text-3",
+    "error",
 ] as const;
 
 export type Type = (typeof TYPOGRAPHY)[number];

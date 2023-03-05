@@ -44,11 +44,11 @@ exports[`Input component should has text label 1`] = `
     <label
       class="label"
     >
-      <h1
-        class="heading1"
+      <p
+        class="textSecond"
       >
         test label
-      </h1>
+      </p>
       <input
         class="input"
         placeholder="Test"
@@ -135,65 +135,6 @@ exports[`Input component should render textarea 1`] = `
         placeholder="Test"
       />
     </label>
-  </div>
-</div>
-`;
-
-exports[`Input component should renders input with social-icons 1`] = `
-<div>
-  <div
-    class="wrapper"
-  >
-    <label
-      class="label"
-    >
-      <input
-        class="input inputSocial input__common_invalid"
-        placeholder="vk-input"
-        value=""
-      />
-    </label>
-    <span
-      class="error__static"
-    >
-      error
-    </span>
-  </div>
-  <div
-    class="wrapper"
-  >
-    <label
-      class="label"
-    >
-      <input
-        class="input inputSocial input__common_invalid"
-        placeholder="tg-input"
-        value=""
-      />
-    </label>
-    <span
-      class="error__static"
-    >
-      error
-    </span>
-  </div>
-  <div
-    class="wrapper"
-  >
-    <label
-      class="label"
-    >
-      <input
-        class="input inputSocial input__common_invalid"
-        placeholder="viber-input"
-        value=""
-      />
-    </label>
-    <span
-      class="error__static"
-    >
-      error
-    </span>
   </div>
 </div>
 `;

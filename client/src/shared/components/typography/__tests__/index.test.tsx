@@ -2,7 +2,7 @@ import React from "react";
 
 import { render } from "@testing-library/react";
 
-import Typography from "../index";
+import { Typography } from "../index";
 import { TYPOGRAPHY } from "../type";
 
 describe("Typography component", () => {
