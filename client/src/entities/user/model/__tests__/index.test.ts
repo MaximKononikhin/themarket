@@ -32,6 +32,21 @@ describe("entities/userModel", () => {
         expect(scope.getState($user)).toStrictEqual(userMock);
     });
 
+    it("should logout", async () => {
+        const fakeLogoutFx = jest.fn();
+
+        const scope = fork({
+            handlers: new Map().set(effects.logoutFx, fakeLogoutFx),
+            values: new Map().set($user, userMock),
+        });
+
+        expect(scope.getState($user)).toStrictEqual(userMock);
+
+        await allSettled(events.logout, { scope });
+
+        expect(scope.getState($user)).toBeNull();
+    });
+
     it("should throw error", async () => {
         const fakeGetUserFx = jest.fn(() => {
             throw apiErrorMock;

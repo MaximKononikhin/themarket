@@ -3,41 +3,41 @@ import { allSettled, fork } from "effector";
 import { userModel } from "@entities/user";
 import { apiErrorMock } from "@shared/lib/constants";
 
-import { $error, effects, events } from "../.";
+import { $error, effects, events } from "../index";
 
-describe("features/loginUser", () => {
-    it("should login", async () => {
-        const loginUserFx = jest.fn();
+describe("features/registerUser", () => {
+    it("should register", async () => {
+        const registerUserFakeFx = jest.fn();
         const getUserFakeFx = jest.fn();
 
         const scope = fork({
             handlers: new Map()
-                .set(effects.loginUserFx, loginUserFx)
+                .set(effects.registerUserFx, registerUserFakeFx)
                 .set(userModel.effects.getUserFx, getUserFakeFx),
         });
 
-        await allSettled(events.loginUser, {
+        await allSettled(events.registerUser, {
             scope,
-            params: { email: "", password: "" },
+            params: { email: "", password: "", name: "" },
         });
 
         expect(getUserFakeFx).toHaveBeenCalled();
     });
 
     it("should throw error", async () => {
-        const loginUserFakeFx = jest.fn(() => {
+        const registerUserFakeFx = jest.fn(() => {
             throw apiErrorMock;
         });
 
         const scope = fork({
-            handlers: new Map().set(effects.loginUserFx, loginUserFakeFx),
+            handlers: new Map().set(effects.registerUserFx, registerUserFakeFx),
         });
 
         expect(scope.getState($error)).toBeNull();
 
-        await allSettled(events.loginUser, {
+        await allSettled(events.registerUser, {
             scope,
-            params: { email: "", password: "" },
+            params: { email: "", password: "", name: "" },
         });
 
         expect(scope.getState($error)).toStrictEqual(apiErrorMock);
