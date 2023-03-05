@@ -13,7 +13,7 @@ const registerUserFx = createEffect<CreateUserDto, void, ApiError>(
 
 const registerUser = createEvent<CreateUserDto>();
 
-export const $registerUserLoading = registerUserFx.pending;
+const $registerUserLoading = registerUserFx.pending;
 
 sample({
     clock: registerUser,
