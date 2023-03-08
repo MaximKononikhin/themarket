@@ -9,9 +9,12 @@ export const Button: React.FC<ButtonProps> = ({
     testId,
     children,
     className,
+    wide,
     ...props
 }) => {
-    const composedClass = cn(styles.button, className);
+    const composedClass = cn(styles.button, className, {
+        [styles.wideButton]: wide,
+    });
 
     return (
         <button className={composedClass} data-testid={testId} {...props}>

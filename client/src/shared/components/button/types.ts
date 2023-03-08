@@ -6,4 +6,5 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     /** id **/
     testId?: string;
     className?: string;
+    wide?: boolean;
 }

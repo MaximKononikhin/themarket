@@ -3,8 +3,8 @@ import React, { forwardRef } from "react";
 import cn from "classnames";
 
 import { Typography } from "@shared/components";
-import { useAutosizeTextArea } from "@shared/lib/use-autosize-textarea";
-import { useForwardRef } from "@shared/lib/use-forward-ref";
+import { useAutosizeTextArea } from "@shared/hooks";
+import { useForwardRef } from "@shared/hooks";
 
 import styles from "./index.module.scss";
 import { InputProps } from "./types";

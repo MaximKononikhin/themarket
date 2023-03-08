@@ -8,6 +8,7 @@ import { Button, Group, Input, Typography } from "@shared/components";
 
 import { registerUserDefaultValues, registerUserSchema } from "../lib";
 import { events, selectors } from "../model";
+import styles from "./index.module.scss";
 
 export const Form = () => {
     const {
@@ -27,9 +28,9 @@ export const Form = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <Group direction="column" gap={30}>
-                <Group direction="column" gap={12}>
+        <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+            <Group direction="column" gap={30} width="100%">
+                <Group direction="column" gap={12} width="100%">
                     <Typography type="header-1">
                         Регистрация на маркетплейсе
                     </Typography>
@@ -43,29 +44,40 @@ export const Form = () => {
                         </Typography>
                     )}
                 </Group>
-                <Group direction="column" alignItems="center" gap={20}>
-                    <Group direction="column" gap={15}>
+                <Group
+                    direction="column"
+                    alignItems="center"
+                    gap={20}
+                    width="100%"
+                >
+                    <Group direction="column" gap={15} width="100%">
                         <Input
+                            width="wide"
                             label="Email"
                             placeholder="Введите ваш email"
                             {...register("email")}
                             error={errors.email?.message}
+                            errorType="static"
                         />
                         <Input
+                            width="wide"
                             label="Имя"
                             placeholder="Введите ваше имя"
                             {...register("name")}
                             error={errors.name?.message}
+                            errorType="static"
                         />
                         <Input
+                            width="wide"
                             type="password"
                             label="Пароль"
                             placeholder="Придумайте пароль"
                             {...register("password")}
                             error={errors.password?.message}
+                            errorType="static"
                         />
                     </Group>
-                    <Button type="submit" disabled={isLoading}>
+                    <Button type="submit" disabled={isLoading} wide>
                         Зарегистрироваться
                     </Button>
                 </Group>
