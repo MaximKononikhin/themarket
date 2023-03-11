@@ -1,15 +1,27 @@
 import React from "react";
 
 import { authModalModel } from "@features/auth-modal";
+import { userModel } from "@entities/user";
 import Logo from "@shared/assets/icons/logo.svg?sprite";
 import { Button, Group, Input, Typography } from "@shared/components";
 
+import { Profile } from "../profile";
 import styles from "./index.module.scss";
 
 export const Header = () => {
+    const user = userModel.selectors.useUser();
+
     const handleSignInButton = () => {
         authModalModel.events.openAuthModal();
     };
+
+    const content = user ? (
+        <Profile user={user} />
+    ) : (
+        <button className={styles.header__btn} onClick={handleSignInButton}>
+            <Typography type="text-2">Войти</Typography>
+        </button>
+    );
 
     return (
         <header className={styles.header}>
@@ -29,14 +41,14 @@ export const Header = () => {
                         </Group>
                     </Group>
                 </Group>
-                <Group direction="row" alignItems="center" gap={20}>
+                <Group
+                    direction="row"
+                    alignItems="center"
+                    gap={20}
+                    className={styles.header__profile}
+                >
                     <Button>Продать</Button>
-                    <button
-                        className={styles.header__btn}
-                        onClick={handleSignInButton}
-                    >
-                        <Typography type="text-2">Войти</Typography>
-                    </button>
+                    {content}
                 </Group>
             </Group>
         </header>

@@ -84,7 +84,7 @@ const useUser = () => useStore($user);
 const useUserError = () => useStore($userError);
 const useUserLoading = () => useStore($userLoading);
 
-const useLoginUserError = () => useStore($userError);
+const useLoginUserError = () => useStore($loginError);
 const useLoginUserLoading = () => useStore($loginUserLoading);
 
 const useRegisterUserError = () => useStore($registerError);

@@ -15,8 +15,8 @@ export const Group: React.FC<PropsWithChildren<GroupProps>> = (props) => {
             className={classNames}
             style={{
                 gap: `${props.gap ?? 0}px`,
-                alignItems: props.alignItems ?? "flex-start",
-                flexDirection: props.direction,
+                alignItems: props.alignItems ?? "center",
+                flexDirection: props.direction ?? "row",
                 width: props.width ?? "fit-content",
                 margin: props.margin || "",
             }}

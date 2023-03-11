@@ -25,15 +25,14 @@ describe("features/authModalModel", () => {
         expect(scope.getState($isAuthModalOpened)).toBeFalsy();
         expect(scope.getState($authModalStage)).toEqual("login");
     });
-    
+
     it("should switch stage", async () => {
         const scope = fork({
-            values: new Map()
-                .set($authModalStage, "register"),
+            values: new Map().set($authModalStage, "register"),
         });
-        
+
         await allSettled(events.setLoginStage, { scope });
-        
+
         expect(scope.getState($authModalStage)).toEqual("login");
     });
 });

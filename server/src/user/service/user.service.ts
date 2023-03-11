@@ -7,6 +7,7 @@ import UserEntity from '@shared/entities/user.entity';
 import { User } from '@user/models/user.interface';
 import { CreateUserDto } from '@auth/models/dto/create-user.dto';
 import { FileService } from '@file/service/file.service';
+import { STATIC_URL } from "@shared/constants/static";
 
 @Injectable()
 export class UserService {
@@ -42,7 +43,8 @@ export class UserService {
 
 	async uploadAvatar(id: number, avatar: Express.Multer.File) {
 		const fileName = await this.fileService.createFile(avatar);
-		await this.userRepository.update(id, { avatar: fileName });
+		const resultFilename = STATIC_URL + fileName;
+		await this.userRepository.update(id, { avatar: resultFilename });
 	}
 
 	async deleteAvatar(id: number) {
