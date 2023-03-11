@@ -1,8 +1,7 @@
 import { createEvent, createStore, sample } from "effector";
 import { useStore } from "effector-react";
 
-import { loginUserModel } from "@features/auth/login-user";
-import { registerUserModel } from "@features/auth/register-user";
+import { userModel } from "@entities/user";
 
 export const $isAuthModalOpened = createStore(false);
 export const $authModalStage = createStore<"login" | "register">("login");
@@ -25,8 +24,8 @@ sample({
 
 sample({
     clock: [
-        registerUserModel.effects.registerUserFx.doneData,
-        loginUserModel.effects.loginUserFx.doneData,
+        userModel.effects.registerUserFx.doneData,
+        userModel.effects.loginUserFx.doneData,
     ],
     target: closeAuthModal,
 });

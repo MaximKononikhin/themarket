@@ -6,8 +6,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { CreateUserDto } from "@shared/api";
 import { Button, Group, Input, Typography } from "@shared/components";
 
-import { registerUserDefaultValues, registerUserSchema } from "../lib";
-import { events, selectors } from "../model";
+import { registerUserDefaultValues, registerUserSchema } from "../../lib";
+import { events, selectors } from "../../model";
 import styles from "./index.module.scss";
 
 export const Form = () => {

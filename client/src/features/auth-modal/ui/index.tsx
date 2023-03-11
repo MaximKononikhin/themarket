@@ -1,11 +1,9 @@
 import React from "react";
 
-import { LoginUserForm } from "@features/auth/login-user";
-import { RegisterUserForm } from "@features/auth/register-user";
-import { Group, Typography } from "@shared/components";
-import { Modal } from "@shared/components/modal";
+import { LoginUserForm, RegisterUserForm } from "@entities/user";
+import { Group, Modal, Typography } from "@shared/components";
 
-import { events, selectors } from "../../model";
+import { events, selectors } from "../model";
 import styles from "./index.module.scss";
 
 export const AuthModal = () => {

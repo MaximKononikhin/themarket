@@ -2,26 +2,13 @@ import React from "react";
 
 import "./styles/index.scss";
 
-import { AuthModal, headerModel } from "@widgets/header";
-import { userModel } from "@entities/user";
-import { Button } from "@shared/components";
+import { Header } from "@widgets/header";
+import { AuthModal } from "@features/auth-modal";
 
 const App = () => {
-    const user = userModel.selectors.useUser();
-    
     return (
         <>
-            {user ? (
-                user.name
-            ) : (
-                <Button
-                    onClick={() => {
-                        headerModel.events.openAuthModal();
-                    }}
-                >
-                    da
-                </Button>
-            )}
+            <Header />
             <AuthModal />
         </>
     );
