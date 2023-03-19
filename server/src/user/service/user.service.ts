@@ -3,11 +3,11 @@ import { InjectRepository } from '@nestjs/typeorm';
 
 import { Repository } from 'typeorm';
 
+import { STATIC_URL } from '@shared/constants/static';
 import UserEntity from '@shared/entities/user.entity';
 import { User } from '@user/models/user.interface';
 import { CreateUserDto } from '@auth/models/dto/create-user.dto';
 import { FileService } from '@file/service/file.service';
-import { STATIC_URL } from "@shared/constants/static";
 
 @Injectable()
 export class UserService {
