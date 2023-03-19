@@ -19,12 +19,15 @@
         "types:openapi": "openapi -i http://localhost:5000/swagger-json -o src/shared/api/openapi"
     },
     "dependencies": {
+        "@hookform/resolvers": "^2.9.11",
+        "atomic-router": "^0.8.0",
+        "atomic-router-react": "^0.8.1",
         "compose-function": "^3.0.3",
         "effector": "^22.5.2",
         "effector-react": "^22.5.0",
+        "patronum": "^1.16.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
-        "@hookform/resolvers": "^2.9.11",
         "react-hook-form": "^7.43.2",
         "yup": "^1.0.1"
     },

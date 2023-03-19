@@ -18,7 +18,7 @@
         "jsx": "react",
         "paths": {
             "@app/*": ["./src/app/*"],
-            "@pages/*": ["./src/pages/*"],
+            "@pages": ["./src/pages/index.tsx"],
             "@widgets/*": ["./src/widgets/*"],
             "@features/*": ["./src/features/*"],
             "@entities/*": ["./src/entities/*"],

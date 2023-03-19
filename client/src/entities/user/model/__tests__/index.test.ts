@@ -1,7 +1,7 @@
 import { allSettled, fork } from "effector";
 
 import { UserEntity } from "@shared/api";
-import { apiErrorMock } from "@shared/lib/constants";
+import { apiErrorMock } from "@shared/lib";
 
 import {
     $loginError,

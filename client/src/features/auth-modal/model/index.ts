@@ -23,6 +23,12 @@ sample({
 });
 
 sample({
+    clock: closeAuthModal,
+    fn: () => null,
+    target: [userModel.$loginError, userModel.$registerError],
+});
+
+sample({
     clock: [
         userModel.effects.registerUserFx.doneData,
         userModel.effects.loginUserFx.doneData,

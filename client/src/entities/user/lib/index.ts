@@ -8,7 +8,7 @@ import {
     TOO_LONG_PASSWORD,
     TOO_SHORT_NAME,
     TOO_SHORT_PASSWORD,
-} from "@shared/lib/constants";
+} from "@shared/lib";
 
 export const loginUserDefaultValues: LoginUserDto = {
     email: "",

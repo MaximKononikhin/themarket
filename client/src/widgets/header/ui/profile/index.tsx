@@ -1,10 +1,12 @@
 import React from "react";
 
+import { Link } from "atomic-router-react";
+
 import { userModel } from "@entities/user";
 import UserIcon from "@shared/assets/icons/profile.svg?sprite";
 import { Group, Typography } from "@shared/components";
 
-import { USER_MENU_LINKS } from "../../lib/constatns";
+import { USER_MENU_LINKS } from "../../lib/constants";
 import styles from "./index.module.scss";
 import { ProfileProps } from "./types";
 
@@ -22,9 +24,13 @@ export const Profile: React.FC<ProfileProps> = ({ user }) => {
             key={item.title}
             className={styles.user__menuItem}
         >
-            <a className={styles.user__menuBtn}>
+            <Link
+                to={item.link.route}
+                query={item.link.query}
+                className={styles.user__menuBtn}
+            >
                 <Typography type="text-2">{item.title}</Typography>
-            </a>
+            </Link>
         </Group>
     ));
 

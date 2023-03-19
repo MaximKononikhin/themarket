@@ -2,9 +2,12 @@ import React, { useEffect } from "react";
 
 import "./styles/index.scss";
 
+import { Pages } from "@pages";
 import { Header } from "@widgets/header";
 import { AuthModal } from "@features/auth-modal";
 import { userModel } from "@entities/user";
+
+import { withProviders } from "./providers";
 
 const App = () => {
     useEffect(() => {
@@ -14,9 +17,10 @@ const App = () => {
     return (
         <>
             <Header />
+            <Pages />
             <AuthModal />
         </>
     );
 };
 
-export default App;
+export default withProviders(App);

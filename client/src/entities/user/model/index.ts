@@ -26,7 +26,7 @@ const registerUserFx = createEffect<CreateUserDto, void, ApiError>(
 export const $user = createStore<Maybe<UserEntity>>(null);
 
 export const $loginUserLoading = loginUserFx.pending;
-export const $userLoading = getUserFx.pending;
+export const $userLoading = createStore(true);
 export const $registerUserLoading = registerUserFx.pending;
 
 export const $userError = createStore<Maybe<ApiError>>(null);
@@ -70,6 +70,8 @@ sample({
 
 $user.on(getUserFx.doneData, (_, user) => user);
 $user.on(logoutFx.doneData, () => null);
+
+$userLoading.on([getUserFx.doneData, getUserFx.failData], () => false);
 
 $userError.on([getUserFx.failData, logoutFx.failData], (_, error) => error);
 $userError.on(getUserFx.doneData, () => null);
