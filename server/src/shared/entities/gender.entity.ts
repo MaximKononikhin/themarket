@@ -12,7 +12,7 @@ export enum GenderTranslation {
 	WOMAN = 'woman',
 }
 
-@Entity()
+@Entity({ name: 'gender' })
 export class GenderEntity {
 	@PrimaryGeneratedColumn()
 	id: number;

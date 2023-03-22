@@ -2,7 +2,7 @@ import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 import { CategoryEntity } from './category.entity';
 
-@Entity()
+@Entity({ name: 'subcategory' })
 export class SubcategoryEntity {
 	@PrimaryGeneratedColumn()
 	id: number;

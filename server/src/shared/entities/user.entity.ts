@@ -3,7 +3,7 @@ import { ApiHideProperty } from '@nestjs/swagger';
 import { Exclude } from 'class-transformer';
 import { BeforeInsert, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity()
+@Entity({ name: 'user' })
 class UserEntity {
 	@PrimaryGeneratedColumn()
 	public id: number;
