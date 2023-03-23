@@ -1,7 +1,15 @@
 import { ApiHideProperty } from '@nestjs/swagger';
 
 import { Exclude } from 'class-transformer';
-import { BeforeInsert, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+	BeforeInsert,
+	Column,
+	Entity,
+	OneToMany,
+	PrimaryGeneratedColumn,
+} from 'typeorm';
+
+import { ProductEntity } from './product.entity';
 
 @Entity({ name: 'user' })
 class UserEntity {
@@ -26,6 +34,9 @@ class UserEntity {
 	emailToLowerCase() {
 		this.email = this.email.toLowerCase();
 	}
+
+	@OneToMany(() => ProductEntity, (product) => product.category)
+	products: ProductEntity[];
 }
 
 export default UserEntity;

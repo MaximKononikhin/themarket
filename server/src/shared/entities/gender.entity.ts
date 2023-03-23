@@ -1,6 +1,8 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 import { CategoryEntity } from './category.entity';
+import { ConditionEntity } from './condition.entity';
+import { ProductEntity } from './product.entity';
 
 export enum GenderName {
 	MAN = 'Мужской',
@@ -25,4 +27,10 @@ export class GenderEntity {
 
 	@OneToMany(() => CategoryEntity, (category) => category.gender)
 	categories: CategoryEntity[];
+
+	@OneToMany(() => ConditionEntity, (condition) => condition.gender)
+	conditions: ConditionEntity[];
+
+	@OneToMany(() => ProductEntity, (product) => product.gender)
+	products: ProductEntity[];
 }
