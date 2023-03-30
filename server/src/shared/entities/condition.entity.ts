@@ -1,3 +1,5 @@
+import { ApiHideProperty } from '@nestjs/swagger';
+
 import {
 	Column,
 	Entity,
@@ -17,9 +19,11 @@ export class ConditionEntity {
 	@Column()
 	name: string;
 
+	@ApiHideProperty()
 	@OneToMany(() => ProductEntity, (product) => product.category)
 	products: ProductEntity[];
 
+	@ApiHideProperty()
 	@ManyToOne(() => GenderEntity, (gender) => gender.conditions)
 	gender: GenderEntity;
 }

@@ -35,6 +35,7 @@ class UserEntity {
 		this.email = this.email.toLowerCase();
 	}
 
+	@ApiHideProperty()
 	@OneToMany(() => ProductEntity, (product) => product.category)
 	products: ProductEntity[];
 }

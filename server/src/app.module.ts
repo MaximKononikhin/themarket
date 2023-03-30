@@ -9,6 +9,7 @@ import { AuthModule } from '@auth/auth.module';
 import { FileModule } from '@file/file.module';
 
 import { DatabaseModule } from './database/database.module';
+import { DictionaryModule } from './dictionary/dictionary.module';
 
 @Module({
 	imports: [
@@ -20,6 +21,7 @@ import { DatabaseModule } from './database/database.module';
 		ServeStaticModule.forRoot({
 			rootPath: resolve(__dirname, 'static'),
 		}),
+		DictionaryModule,
 	],
 	controllers: [],
 	providers: [],

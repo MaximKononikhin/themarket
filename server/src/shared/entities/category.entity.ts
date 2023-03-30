@@ -1,3 +1,5 @@
+import { ApiHideProperty } from '@nestjs/swagger';
+
 import {
 	Column,
 	Entity,
@@ -22,15 +24,19 @@ export class CategoryEntity {
 	@Column()
 	translation: string;
 
+	@ApiHideProperty()
 	@OneToMany(() => SubcategoryEntity, (subcategory) => subcategory.category)
 	subcategories: SubcategoryEntity[];
 
+	@ApiHideProperty()
 	@OneToMany(() => SizeEntity, (size) => size.category)
 	sizes: SizeEntity[];
 
+	@ApiHideProperty()
 	@OneToMany(() => ProductEntity, (product) => product.category)
 	products: ProductEntity[];
 
+	@ApiHideProperty()
 	@ManyToOne(() => GenderEntity, (gender) => gender.categories)
 	gender: GenderEntity;
 }

@@ -3,10 +3,12 @@ import {
 	CreateDateColumn,
 	Entity,
 	ManyToOne,
+	OneToMany,
 	PrimaryGeneratedColumn,
 } from 'typeorm';
 
 import { ConditionEntity } from '@shared/entities/condition.entity';
+import { ProductPhotoEntity } from '@shared/entities/product-photo.entity';
 
 import { CategoryEntity } from './category.entity';
 import { GenderEntity } from './gender.entity';
@@ -39,6 +41,9 @@ export class ProductEntity {
 
 	@Column()
 	city: string;
+
+	@OneToMany(() => ProductPhotoEntity, (photo) => photo.product)
+	photos: ProductPhotoEntity[];
 
 	@ManyToOne(() => UserEntity, (user) => user.products)
 	user: UserEntity;

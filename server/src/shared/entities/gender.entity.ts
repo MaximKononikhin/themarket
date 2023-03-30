@@ -1,3 +1,5 @@
+import { ApiHideProperty } from '@nestjs/swagger';
+
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 import { CategoryEntity } from './category.entity';
@@ -25,12 +27,15 @@ export class GenderEntity {
 	@Column({ unique: true, enum: GenderTranslation })
 	translation: GenderTranslation;
 
+	@ApiHideProperty()
 	@OneToMany(() => CategoryEntity, (category) => category.gender)
 	categories: CategoryEntity[];
 
+	@ApiHideProperty()
 	@OneToMany(() => ConditionEntity, (condition) => condition.gender)
 	conditions: ConditionEntity[];
 
+	@ApiHideProperty()
 	@OneToMany(() => ProductEntity, (product) => product.gender)
 	products: ProductEntity[];
 }
