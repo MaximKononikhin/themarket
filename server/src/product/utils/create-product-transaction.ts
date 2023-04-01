@@ -25,7 +25,7 @@ export class CreateProductTransaction extends BaseTransaction<
 		}
 
 		const product = manager.create(ProductEntity, {
-			...data,
+			...data.productDto,
 			user: { id: data.user.id },
 			photos,
 			gender: { id: data.productDto.genderId },

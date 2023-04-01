@@ -1,5 +1,9 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
 
+import { Repository } from 'typeorm';
+
+import { ProductEntity } from '@shared/entities/product.entity';
 import { User } from '@user/models/user.interface';
 
 import { CreateProductDto } from '../models/create-product.dto';
@@ -9,6 +13,8 @@ import { CreateProductTransaction } from '../utils/create-product-transaction';
 export class ProductService {
 	constructor(
 		private readonly createProductTransaction: CreateProductTransaction,
+		@InjectRepository(ProductEntity)
+		private readonly productRepository: Repository<ProductEntity>,
 	) {}
 
 	async create(dto: CreateProductDto, user: User) {
@@ -16,5 +22,9 @@ export class ProductService {
 			productDto: dto,
 			user,
 		});
+	}
+
+	async getAll() {
+		return await this.productRepository.find({ relations: ['photos'] });
 	}
 }
