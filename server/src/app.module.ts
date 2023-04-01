@@ -10,6 +10,7 @@ import { FileModule } from '@file/file.module';
 
 import { DatabaseModule } from './database/database.module';
 import { DictionaryModule } from './dictionary/dictionary.module';
+import { ProductModule } from './product/product.module';
 
 @Module({
 	imports: [
@@ -22,6 +23,7 @@ import { DictionaryModule } from './dictionary/dictionary.module';
 			rootPath: resolve(__dirname, 'static'),
 		}),
 		DictionaryModule,
+		ProductModule,
 	],
 	controllers: [],
 	providers: [],
