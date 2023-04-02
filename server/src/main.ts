@@ -10,6 +10,7 @@ import * as passport from 'passport';
 import { DataSource } from 'typeorm';
 
 import { Session } from '@shared/entities/sesson.entity';
+import { TypeOrmExceptionFilter } from '@shared/filters/typeorm-exception-filter.filter';
 import { ValidationPipe } from '@shared/pipes/validation.pipe';
 
 import { AppModule } from './app.module';
@@ -18,6 +19,7 @@ async function bootstrap() {
 	const app = await NestFactory.create<NestExpressApplication>(AppModule);
 	const configService = app.get(ConfigService);
 	app.useGlobalPipes(new ValidationPipe());
+	app.useGlobalFilters(new TypeOrmExceptionFilter());
 
 	const sessionRepository = app.get(DataSource).getRepository(Session);
 

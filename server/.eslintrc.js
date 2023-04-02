@@ -48,6 +48,7 @@ module.exports = {
 					`FunctionExpression > .params > :matches(Decorator, :not(:first-child))`,
 					`ClassBody.body > PropertyDefinition[decorators.length > 0] > .key`,
 				],
+				SwitchCase: 1,
 			},
 		],
 	},
