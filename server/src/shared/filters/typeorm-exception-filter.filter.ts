@@ -69,7 +69,7 @@ const GlobalResponseError: (
 	};
 };
 
-interface IResponseError {
+export interface IResponseError {
 	statusCode: number;
 	message: string;
 	code: string;

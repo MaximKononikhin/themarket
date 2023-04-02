@@ -1,4 +1,10 @@
+import { Type } from 'class-transformer';
 import { IsArray, IsNumber, IsString } from 'class-validator';
+
+class Photo {
+	url: string;
+	isMain: boolean;
+}
 
 export class CreateProductDto {
 	@IsString()
@@ -17,10 +23,8 @@ export class CreateProductDto {
 	city: string;
 
 	@IsArray()
-	photos: {
-		url: string;
-		isMain: boolean;
-	}[];
+	@Type(() => Photo)
+	photos: Photo[];
 
 	@IsNumber()
 	genderId: number;

@@ -1,3 +1,5 @@
+import { ApiHideProperty } from '@nestjs/swagger';
+
 import {
 	Column,
 	CreateDateColumn,
@@ -48,12 +50,15 @@ export class ProductEntity {
 	@ManyToOne(() => UserEntity, (user) => user.products)
 	user: UserEntity;
 
+	@ApiHideProperty()
 	@ManyToOne(() => GenderEntity, (gender) => gender.products)
 	gender: GenderEntity;
 
+	@ApiHideProperty()
 	@ManyToOne(() => CategoryEntity, (category) => category.products)
 	category: CategoryEntity;
 
+	@ApiHideProperty()
 	@ManyToOne(() => SubcategoryEntity, (subcategory) => subcategory.products)
 	subcategory: SubcategoryEntity;
 
