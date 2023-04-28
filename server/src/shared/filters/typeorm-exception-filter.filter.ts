@@ -38,13 +38,17 @@ export class TypeOrmExceptionFilter implements ExceptionFilter {
 				message = (exception as CannotCreateEntityIdMapError).message;
 				code = (exception as any).code;
 				break;
-			default:
-				status = HttpStatus.INTERNAL_SERVER_ERROR;
 		}
 
-		response
-			.status(status)
-			.json(GlobalResponseError(status, message, code, request));
+		if (
+			exception.constructor === QueryFailedError ||
+			exception.constructor === EntityNotFoundError ||
+			exception.constructor === CannotCreateEntityIdMapError
+		) {
+			response
+				.status(status)
+				.json(GlobalResponseError(status, message, code, request));
+		}
 	}
 }
 

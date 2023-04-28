@@ -19,7 +19,7 @@ async function bootstrap() {
 	const app = await NestFactory.create<NestExpressApplication>(AppModule);
 	const configService = app.get(ConfigService);
 	app.useGlobalPipes(new ValidationPipe());
-	app.useGlobalFilters(new TypeOrmExceptionFilter());
+	// app.useGlobalFilters(new TypeOrmExceptionFilter());
 
 	const sessionRepository = app.get(DataSource).getRepository(Session);
 

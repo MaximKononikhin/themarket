@@ -1,9 +1,12 @@
 import React from "react";
 
+import { Link } from "atomic-router-react";
+
 import { authModalModel } from "@features/auth-modal";
 import { userModel } from "@entities/user";
 import Logo from "@shared/assets/icons/logo.svg?sprite";
 import { Button, Group, Input, Typography } from "@shared/components";
+import { ROUTES_MAP } from "@shared/lib";
 
 import { Profile } from "../profile";
 import styles from "./index.module.scss";
@@ -32,7 +35,9 @@ export const Header = () => {
                 className={styles.header__wrapper}
             >
                 <Group direction="row" alignItems="center" gap={20}>
-                    <Logo className={styles.header__logo} />
+                    <Link to={ROUTES_MAP.home}>
+                        <Logo className={styles.header__logo} />
+                    </Link>
                     <Group direction="row" alignItems="center" gap={20}>
                         <Input placeholder="Поиск" />
                         <Group direction="row" gap={20} alignItems="center">
@@ -47,7 +52,9 @@ export const Header = () => {
                     gap={20}
                     className={styles.header__profile}
                 >
-                    <Button>Продать</Button>
+                    <Link to={ROUTES_MAP.newProduct}>
+                        <Button>Продать</Button>
+                    </Link>
                     {content}
                 </Group>
             </Group>

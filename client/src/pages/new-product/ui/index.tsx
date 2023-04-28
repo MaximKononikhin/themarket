@@ -6,12 +6,12 @@ import { createProtectedRoute } from "@features/auth-modal/lib";
 import { Layout, Typography } from "@shared/components";
 import { ROUTES_MAP } from "@shared/lib";
 
-export const ProfilePage = createRouteView({
-    route: createProtectedRoute(ROUTES_MAP.profile),
+export const NewProductPage = createRouteView({
+    route: createProtectedRoute(ROUTES_MAP.newProduct),
     view() {
         return (
             <Layout>
-                <Typography type="header-1">PROFILE</Typography>
+                <Typography type="header-1">new product</Typography>
             </Layout>
         );
     },
