@@ -5,6 +5,8 @@ import * as fs from 'fs/promises';
 import * as path from 'path';
 import * as uuid from 'uuid';
 
+import { STATIC_URL } from '@shared/constants/static';
+
 @Injectable()
 export class FileService {
 	async createFile(file: Express.Multer.File): Promise<string> {
@@ -18,7 +20,7 @@ export class FileService {
 				await fs.mkdir(filePath, { recursive: true });
 			}
 			await fs.writeFile(path.join(filePath, fileName), file.buffer);
-			return fileName;
+			return STATIC_URL + fileName;
 		} catch (e) {
 			throw new InternalServerErrorException(
 				'Произошла ошибка при записи файла',

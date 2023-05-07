@@ -19,7 +19,7 @@ export type { SizeEntity } from "./models/SizeEntity";
 export type { SubcategoryEntity } from "./models/SubcategoryEntity";
 export type { UserEntity } from "./models/UserEntity";
 
-export { Service } from "./services/Service";
+export { DictionaryService } from "./services/DictionaryService";
 export { AuthService } from "./services/AuthService";
 export { ProductService } from "./services/ProductService";
 export { UserService } from "./services/UserService";

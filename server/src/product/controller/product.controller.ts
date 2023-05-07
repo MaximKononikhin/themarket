@@ -1,12 +1,18 @@
 import {
 	Body,
 	Controller,
+	FileTypeValidator,
 	Get,
 	HttpStatus,
+	ParseFilePipe,
 	Post,
+	UploadedFiles,
 	UseGuards,
+	UseInterceptors,
 } from '@nestjs/common';
+import { FilesInterceptor } from '@nestjs/platform-express';
 import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { ApiImplicitFile } from '@nestjs/swagger/dist/decorators/api-implicit-file.decorator';
 
 import { GetUser } from '@shared/decorators/get-user.decorator';
 import { ProductEntity } from '@shared/entities/product.entity';
@@ -28,6 +34,23 @@ export class ProductController {
 	@UseGuards(CookieAuthenticationGuard)
 	async create(@Body() dto: CreateProductDto, @GetUser() user: User) {
 		return await this.productService.create(dto, user);
+	}
+
+	@ApiOperation({ summary: 'Загрузка фотографий товара' })
+	@ApiResponse({ status: HttpStatus.OK, type: Array<string> })
+	@ApiImplicitFile({ name: 'photos' })
+	@Post('photos')
+	@UseInterceptors(FilesInterceptor('photos'))
+	@UseGuards(CookieAuthenticationGuard)
+	async uploadFiles(
+		@UploadedFiles(
+			new ParseFilePipe({
+				validators: [new FileTypeValidator({ fileType: 'image/jpeg' })],
+			}),
+		)
+		files: Express.Multer.File[],
+	) {
+		return await this.productService.uploadPhotos(files);
 	}
 
 	@ApiOperation({ summary: 'Получение товаров' })

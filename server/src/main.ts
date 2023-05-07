@@ -10,7 +10,6 @@ import * as passport from 'passport';
 import { DataSource } from 'typeorm';
 
 import { Session } from '@shared/entities/sesson.entity';
-import { TypeOrmExceptionFilter } from '@shared/filters/typeorm-exception-filter.filter';
 import { ValidationPipe } from '@shared/pipes/validation.pipe';
 
 import { AppModule } from './app.module';

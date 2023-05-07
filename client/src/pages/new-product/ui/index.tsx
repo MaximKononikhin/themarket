@@ -2,7 +2,7 @@ import React from "react";
 
 import { createRouteView } from "atomic-router-react";
 
-import { createProtectedRoute } from "@features/auth-modal/lib";
+import { createProtectedRoute } from "@features/auth-modal";
 import { Layout, Typography } from "@shared/components";
 import { ROUTES_MAP } from "@shared/lib";
 

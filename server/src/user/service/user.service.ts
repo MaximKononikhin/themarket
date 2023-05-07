@@ -3,7 +3,6 @@ import { InjectRepository } from '@nestjs/typeorm';
 
 import { Repository } from 'typeorm';
 
-import { STATIC_URL } from '@shared/constants/static';
 import UserEntity from '@shared/entities/user.entity';
 import { User } from '@user/models/user.interface';
 import { CreateUserDto } from '@auth/models/dto/create-user.dto';
@@ -43,7 +42,7 @@ export class UserService {
 
 	async uploadAvatar(id: number, avatar: Express.Multer.File) {
 		const fileName = await this.fileService.createFile(avatar);
-		const resultFilename = STATIC_URL + fileName;
+		const resultFilename = fileName;
 		await this.userRepository.update(id, { avatar: resultFilename });
 	}
 

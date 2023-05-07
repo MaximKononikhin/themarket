@@ -39,4 +39,23 @@ export class ProductService {
             url: "/api/product",
         });
     }
+
+    /**
+     * Загрузка фотографий товара
+     * @param photos
+     * @returns any[]
+     * @returns string
+     * @throws ApiError
+     */
+    public static productControllerUploadFiles(
+        photos?: Blob
+    ): CancelablePromise<any[] | Array<string>> {
+        return __request(OpenAPI, {
+            method: "POST",
+            url: "/api/product/photos",
+            formData: {
+                photos: photos,
+            },
+        });
+    }
 }
