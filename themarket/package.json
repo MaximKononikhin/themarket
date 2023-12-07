@@ -1,0 +1,37 @@
+{
+    "name": "themarket",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev --turbo",
+        "build": "next build",
+        "start": "next start",
+        "fix": "npm run fix:prettier && npm run fix:eslint",
+        "fix:eslint": "eslint --fix -f unix .",
+        "fix:prettier": "prettier --write .",
+        "check:prettier": "prettier --check .",
+        "check:eslint": "eslint -f unix .",
+        "check:tsc": "tsc --project tsconfig.json",
+        "check": "npm run check:prettier && npm run check:tsc && npm run check:eslint"
+    },
+    "dependencies": {
+        "next": "14.0.3",
+        "next-auth": "^4.24.5",
+        "react": "^18",
+        "react-dom": "^18"
+    },
+    "devDependencies": {
+        "@types/node": "^20",
+        "@types/react": "^18",
+        "@types/react-dom": "^18",
+        "@typescript-eslint/eslint-plugin": "^6.13.2",
+        "eslint": "^8.27.0",
+        "eslint-config-next": "14.0.3",
+        "eslint-plugin-react": "^7.31.10",
+        "eslint-plugin-react-hooks": "^4.6.0",
+        "eslint-plugin-simple-import-sort": "^8.0.0",
+        "eslint-plugin-sonarjs": "0.18.0",
+        "prettier": "^2.7.1",
+        "typescript": "^5"
+    }
+}
