@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+import { Button } from "@shared/ui";
+
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -9,6 +11,7 @@ export default function Home() {
                 <p>
                     Get started by editing&nbsp;
                     <code className={styles.code}>src/app/page.tsx</code>
+                    <Button>CLICK ME!</Button>
                 </p>
                 <div>
                     <a

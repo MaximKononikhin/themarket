@@ -12,15 +12,26 @@
         "check:prettier": "prettier --check .",
         "check:eslint": "eslint -f unix .",
         "check:tsc": "tsc --project tsconfig.json",
-        "check": "npm run check:prettier && npm run check:tsc && npm run check:eslint"
+        "check": "npm run check:prettier && npm run check:tsc && npm run check:eslint",
+        "storybook": "storybook dev -p 6006",
+        "build-storybook": "storybook build"
     },
     "dependencies": {
         "next": "14.0.3",
         "next-auth": "^4.24.5",
         "react": "^18",
-        "react-dom": "^18"
+        "react-dom": "^18",
+        "styled-components": "^6.1.1"
     },
     "devDependencies": {
+        "@storybook/addon-essentials": "^7.6.4",
+        "@storybook/addon-interactions": "^7.6.4",
+        "@storybook/addon-links": "^7.6.4",
+        "@storybook/addon-onboarding": "^1.0.9",
+        "@storybook/blocks": "^7.6.4",
+        "@storybook/nextjs": "^7.6.4",
+        "@storybook/react": "^7.6.4",
+        "@storybook/test": "^7.6.4",
         "@types/node": "^20",
         "@types/react": "^18",
         "@types/react-dom": "^18",
@@ -32,6 +43,7 @@
         "eslint-plugin-simple-import-sort": "^8.0.0",
         "eslint-plugin-sonarjs": "0.18.0",
         "prettier": "^2.7.1",
+        "storybook": "^7.6.4",
         "typescript": "^5"
     }
 }
