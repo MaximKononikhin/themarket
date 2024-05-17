@@ -37,7 +37,12 @@ export class FileService {
 					'Произошла ошибка при удалении файла',
 				);
 			}
-			await fs.unlink(path.join(filePath, fileName.replace("http://localhost:5000/", "")));
+			await fs.unlink(
+				path.join(
+					filePath,
+					fileName.replace('http://localhost:5000/', ''),
+				),
+			);
 		} catch (e) {
 			throw new InternalServerErrorException(
 				'Произошла ошибка при удалении файла',

@@ -3,6 +3,7 @@ import {
 	Controller,
 	Delete,
 	FileTypeValidator,
+	Get,
 	HttpCode,
 	HttpStatus,
 	ParseFilePipe,
@@ -17,6 +18,7 @@ import {
 	ApiBadRequestResponse,
 	ApiInternalServerErrorResponse,
 	ApiNoContentResponse,
+	ApiOkResponse,
 	ApiOperation,
 	ApiTags,
 } from '@nestjs/swagger';
@@ -25,6 +27,7 @@ import { ApiImplicitFile } from '@nestjs/swagger/dist/decorators/api-implicit-fi
 import { GetUser } from '@shared/decorators/get-user.decorator';
 import UserEntity from '@shared/entities/user.entity';
 import { UserService } from '@user/service/user.service';
+import { User } from '@user/models/user.interface';
 import { CookieAuthenticationGuard } from '@auth/guards/cookie-authentication.guard';
 
 @ApiTags('User')
@@ -32,6 +35,15 @@ import { CookieAuthenticationGuard } from '@auth/guards/cookie-authentication.gu
 @UseGuards(CookieAuthenticationGuard)
 export class UserController {
 	constructor(private readonly userService: UserService) {}
+
+	@ApiOperation({ summary: 'Получения пользователя' })
+	@ApiOkResponse({ type: UserEntity })
+	@HttpCode(HttpStatus.OK)
+	@UseGuards(CookieAuthenticationGuard)
+	@Get()
+	async authenticate(@GetUser() user: User) {
+		return user;
+	}
 
 	@ApiOperation({ summary: 'Обновление информации пользователя' })
 	@ApiNoContentResponse()

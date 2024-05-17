@@ -1,7 +1,6 @@
 import {
 	Body,
 	Controller,
-	Get,
 	HttpCode,
 	HttpStatus,
 	Post,
@@ -16,10 +15,7 @@ import {
 	ApiTags,
 } from '@nestjs/swagger';
 
-import { GetUser } from '@shared/decorators/get-user.decorator';
 import { Logout } from '@shared/decorators/logout.decorator';
-import UserEntity from '@shared/entities/user.entity';
-import { User } from '@user/models/user.interface';
 import { CookieAuthenticationGuard } from '@auth/guards/cookie-authentication.guard';
 import { LogInWithCredentialsGuard } from '@auth/guards/login-with-credentials.guard';
 import { CreateUserDto } from '@auth/models/dto/create-user.dto';
@@ -55,15 +51,6 @@ export class AuthController {
 	@UseGuards(LogInWithCredentialsGuard)
 	async signIn() {
 		return;
-	}
-
-	@ApiOperation({ summary: 'Получения пользователя' })
-	@ApiOkResponse({ type: UserEntity })
-	@HttpCode(HttpStatus.OK)
-	@UseGuards(CookieAuthenticationGuard)
-	@Get()
-	async authenticate(@GetUser() user: User) {
-		return user;
 	}
 
 	@ApiOperation({ summary: 'Выход пользователя' })
